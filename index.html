@@ -1,20 +1,67 @@
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="theme-color" content="#0f6b57">
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#0a6a5a">
 <title>טיסה לתאילנד 2026</title>
-<link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css">
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles.css">
 </head>
 <body>
-<header class="hero"><div><div class="eyebrow">🇹🇭 THAILAND 2026</div><h1 id="appTitle"></h1><p id="appSubtitle"></p></div><div class="hero-actions"><button id="trackerBtn">🧳 המזוודה שלי</button></div></header>
-<nav class="tabs"><button data-tab="route" class="active">🗺️ המסלול</button><button data-tab="bookings">🎫 הזמנות</button><button data-tab="checklist">✅ צ'ק ליסט</button><button data-tab="expenses">💰 הוצאות</button></nav>
+<header class="hero">
+  <div class="hero-shade"></div>
+  <div class="hero-content">
+    <div class="hero-topline"><span class="flag">🇹🇭</span><span>THAILAND 2026</span></div>
+    <h1 id="appTitle"></h1>
+    <p id="appSubtitle"></p>
+    <div class="hero-chips">
+      <span>✈️ 25.09</span><span>🏝️ 13 ימים</span><span id="countdownChip">⏳ טוען...</span>
+    </div>
+  </div>
+</header>
+
 <main>
-<section id="route" class="tab-panel active"><div class="section-head"><h2>המסלול שלי</h2><div id="routeStats" class="stats"></div></div><div id="routeList" class="timeline"></div></section>
-<section id="bookings" class="tab-panel"><h2>הזמנות</h2><div id="bookingList" class="grid"></div></section>
-<section id="checklist" class="tab-panel"><h2>צ'ק ליסט</h2><div id="checklistList" class="stack"></div></section>
-<section id="expenses" class="tab-panel"><h2>הוצאות</h2><div id="expenseSummary" class="stats"></div><div id="expenseList" class="stack"></div></section>
+  <section class="overview-card">
+    <div class="overview-title"><div><small>הטיול שלי</small><h2>תאילנד, ספטמבר 2026</h2></div><div class="plane-bubble">✈️</div></div>
+    <div class="overview-grid">
+      <div><strong id="confirmedCount">0</strong><span>סגור</span></div>
+      <div><strong id="openCount">0</strong><span>פתוח</span></div>
+      <div><strong>09.10</strong><span>חזרה</span></div>
+    </div>
+  </section>
+
+  <nav class="tabs" aria-label="ניווט באפליקציה">
+    <button data-tab="route" class="active"><span>🗺️</span><small>מסלול</small></button>
+    <button data-tab="bookings"><span>🎫</span><small>הזמנות</small></button>
+    <button data-tab="checklist"><span>✅</span><small>צ'ק ליסט</small></button>
+    <button data-tab="expenses"><span>💰</span><small>הוצאות</small></button>
+  </nav>
+
+  <section id="route" class="tab-panel active">
+    <div class="section-head"><div><small>יום אחרי יום</small><h2>המסלול שלי</h2></div><div id="routeStats" class="stats"></div></div>
+    <div id="routeList" class="timeline"></div>
+  </section>
+
+  <section id="bookings" class="tab-panel">
+    <div class="section-head"><div><small>מה כבר סגור</small><h2>הזמנות</h2></div></div>
+    <div id="bookingList" class="grid"></div>
+  </section>
+
+  <section id="checklist" class="tab-panel">
+    <div class="section-head"><div><small>לפני שיוצאים</small><h2>צ'ק ליסט</h2></div></div>
+    <div id="checklistList" class="stack"></div>
+  </section>
+
+  <section id="expenses" class="tab-panel">
+    <div class="section-head"><div><small>מעקב כללי</small><h2>הוצאות</h2></div></div>
+    <div id="expenseSummary" class="stats"></div><div id="expenseList" class="stack"></div>
+  </section>
 </main>
-<footer>אפליקציית טיול לתאילנד 2026</footer>
-<script src="trip-data.js"></script><script src="app.js"></script>
-</body></html>
+
+<button id="trackerBtn" class="tracker-fab" aria-label="איתור המזוודה"><span>🧳</span><b>המזוודה שלי</b></button>
+<footer>Thailand Trip 2026</footer>
+<script src="trip-data.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
