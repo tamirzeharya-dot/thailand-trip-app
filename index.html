@@ -1,104 +1,18 @@
 <!doctype html>
 <html lang="he" dir="rtl">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#08766b">
-<title>טיסה לתאילנד 2026</title>
-<link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="styles.css">
-</head>
-<body>
-<header class="hero tropical-hero">
-  <div class="hero-overlay"></div>
-  <div class="hero-inner">
-    <div class="brand-row">
-      <button class="icon-btn" aria-label="תפריט">☰</button>
-      <div class="brand-title"><strong>Thailand 2026</strong><span>🇹🇭</span></div>
-      <button class="icon-btn" aria-label="הגדרות">⚙️</button>
-    </div>
-    <div class="hero-tagline">Adventure Awaits 🌴</div>
-    <section class="countdown-panel" aria-label="ספירה לאחור לטיסה">
-      <div class="countdown-label">✈️ עד הטיסה נשארו</div>
-      <div id="countdownChip" class="countdown-value">טוען...</div>
-    </section>
-  </div>
-</header>
-
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08766b"><title>טיסה לתאילנד 2026</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css">
+</head><body>
+<header class="hero tropical-hero"><div class="hero-overlay"></div><div class="hero-inner"><div class="brand-row"><button class="icon-btn" aria-label="תפריט">☰</button><div class="brand-title"><strong>Thailand 2026</strong><span>🇹🇭</span></div><button class="icon-btn" aria-label="הגדרות">⚙️</button></div><div class="hero-tagline">Adventure Awaits 🌴</div><section class="countdown-panel"><div class="countdown-label">✈️ עד הטיסה נשארו</div><div id="countdownChip" class="countdown-value">טוען...</div></section></div></header>
 <main>
-  <section class="next-card">
-    <div class="next-head">
-      <div><small>היעד הבא</small><h2>תל אביב > בנגקוק</h2></div>
-      <button class="text-btn" id="updatesBtn">הצג הכל</button>
-    </div>
-    <div class="next-content">
-      <div class="next-thumb" aria-hidden="true"></div>
-      <div class="next-details">
-        <div class="next-flight">✈️ Etihad Airways</div>
-        <strong>25.09.2026 · 15:05</strong>
-        <span>דרך אבו דאבי, נחיתה בבנגקוק 26.09 בשעה 06:45</span>
-        <span id="countdownMini" class="mini-pill">הטיול מתקרב</span>
-      </div>
-    </div>
-    <div class="attention-line">🔔 כאן תמיד יופיע הדבר הבא שצריך לדעת: שעה, יעד, תחבורה והתראה חשובה.</div>
-  </section>
-
-  <section class="tool-grid" aria-label="קיצורי דרך">
-    <button id="ticketsBtn"><span class="tool-icon blue">✈️</span><b>הטיסות שלי</b></button>
-    <button id="hotelsBtn"><span class="tool-icon cyan">🛏️</span><b>מלונות</b></button>
-    <button id="routeBtn"><span class="tool-icon mint">📍</span><b>מסלול טיול</b></button>
-    <button id="attractionsBtn"><span class="tool-icon orange">📷</span><b>אטרקציות</b></button>
-    <button id="documentsBtn"><span class="tool-icon teal">📄</span><b>המסמכים שלי</b></button>
-    <button id="trackerBtn"><span class="tool-icon coral">🧳</span><b>המזוודה שלי</b></button>
-    <button id="alertsBtn"><span class="tool-icon amber">🔔</span><b>עדכונים</b></button>
-    <button id="checkBtn"><span class="tool-icon green">✅</span><b>צ'ק ליסט</b></button>
-  </section>
-
-  <section class="thai-vibes-banner">
-    <div class="banner-shade"></div>
-    <div class="banner-copy"><strong>Thai Vibes</strong><span>Same People. New Stories. 🌺</span></div>
-  </section>
-
-  <section class="overview-card">
-    <div class="overview-title"><div><small>תמונת מצב</small><h2>הטיול במבט אחד</h2></div></div>
-    <div class="overview-grid">
-      <div><strong id="confirmedCount">0</strong><span>קטעים סגורים</span></div>
-      <div><strong id="openCount">0</strong><span>דורשים טיפול</span></div>
-      <div><strong>13</strong><span>ימי טיול</span></div>
-    </div>
-  </section>
-
-  <section id="route" class="tab-panel active">
-    <div class="section-head"><div><small>יום אחרי יום</small><h2>המסלול שלי</h2></div><div id="routeStats" class="stats"></div></div>
-    <div id="routeList" class="timeline"></div>
-  </section>
-
-  <section id="bookings" class="tab-panel">
-    <div class="section-head"><div><small>מה כבר סגור</small><h2>הזמנות וכרטיסים</h2></div></div>
-    <div id="bookingList" class="grid"></div>
-  </section>
-
-  <section id="checklist" class="tab-panel">
-    <div class="section-head"><div><small>לפני שיוצאים</small><h2>צ'ק ליסט</h2></div></div>
-    <div id="checklistList" class="stack"></div>
-  </section>
-
-  <section id="expenses" class="tab-panel">
-    <div class="section-head"><div><small>מעקב כללי</small><h2>הוצאות</h2></div></div>
-    <div id="expenseSummary" class="stats"></div><div id="expenseList" class="stack"></div>
-  </section>
+<section class="next-card"><div class="next-head"><div><small>היעד הבא</small><h2>תל אביב > בנגקוק</h2></div><button class="text-btn" id="updatesBtn">הצג הכל</button></div><div class="next-content"><div class="next-thumb"></div><div class="next-details"><div class="next-flight">✈️ Etihad Airways</div><strong>25.09.2026 · 15:05</strong><span>דרך אבו דאבי, נחיתה בבנגקוק 26.09 בשעה 06:45</span><span id="countdownMini" class="mini-pill">הטיול מתקרב</span></div></div><div class="attention-line">🔔 כאן תמיד יופיע הדבר הבא שצריך לדעת: שעה, יעד, תחבורה והתראה חשובה.</div></section>
+<section class="tool-grid"><button id="ticketsBtn"><span class="tool-icon blue">✈️</span><b>הטיסות שלי</b></button><button id="hotelsBtn"><span class="tool-icon cyan">🛏️</span><b>מלונות</b></button><button id="routeBtn"><span class="tool-icon mint">📍</span><b>מסלול טיול</b></button><button id="attractionsBtn"><span class="tool-icon orange">📷</span><b>אטרקציות</b></button><button id="documentsBtn"><span class="tool-icon teal">📄</span><b>המסמכים שלי</b></button><button id="trackerBtn"><span class="tool-icon coral">🧳</span><b>המזוודה שלי</b></button><button id="alertsBtn"><span class="tool-icon amber">🔔</span><b>עדכונים</b></button><button id="checkBtn"><span class="tool-icon green">✅</span><b>צ'ק ליסט</b></button><button id="linksBtn"><span class="tool-icon teal">🔗</span><b>קישורים שימושיים</b></button></section>
+<section class="thai-vibes-banner"><div class="banner-shade"></div><div class="banner-copy"><strong>Thai Vibes</strong><span>Same People. New Stories. 🌺</span></div></section>
+<section class="overview-card"><div class="overview-title"><div><small>תמונת מצב</small><h2>הטיול במבט אחד</h2></div></div><div class="overview-grid"><div><strong id="confirmedCount">0</strong><span>קטעים סגורים</span></div><div><strong id="openCount">0</strong><span>דורשים טיפול</span></div><div><strong>13</strong><span>ימי טיול</span></div></div></section>
+<section id="route" class="tab-panel active"><div class="section-head"><div><small>יום אחרי יום</small><h2>המסלול שלי</h2></div><div id="routeStats" class="stats"></div></div><div id="routeList" class="timeline"></div></section>
+<section id="bookings" class="tab-panel"><div class="section-head"><div><small>מה כבר סגור</small><h2>הזמנות וכרטיסים</h2></div></div><div id="bookingList" class="grid"></div></section>
+<section id="checklist" class="tab-panel"><div class="section-head"><div><small>לפני שיוצאים</small><h2>צ'ק ליסט</h2></div></div><div id="checklistList" class="stack"></div></section>
+<section id="expenses" class="tab-panel"><div class="section-head"><div><small>מעקב כללי</small><h2>הוצאות</h2></div></div><div id="expenseSummary" class="stats"></div><div id="expenseList" class="stack"></div></section>
+<section id="useful" class="tab-panel"><div class="section-head"><div><small>מסודר לפי נושאים</small><h2>🔗 קישורים שימושיים</h2></div></div><article class="booking-card"><div class="status">🚁 רחפן בתאילנד</div><h3>מרכז הרחפן שלי</h3><p>כל מה שצריך אם ה-DJI Mini 5 Pro יוצא איתי לתאילנד: רישום, ביטוח, מבחן, אפליקציית UAS Portal ובדיקת אזור לפני כל הטסה.</p><div class="actions"><a target="_blank" rel="noopener" href="https://www.travelgal.co.il/post/dronethailand">🇮🇱 המדריך של Travel Gal</a><a target="_blank" rel="noopener" href="https://uasportal.caat.or.th/">🇹🇭 CAAT UAS Portal</a><a target="_blank" rel="noopener" href="https://uasportal.caat.or.th/basicKnow">📚 חומר למבחן</a></div><div class="attention-line">⚠️ לפי המדריך: גם רחפן DJI Mini מתחת ל-250 גרם דורש את תהליך הרישום המתואר. לפני הטסה יש לבדוק את המיקום והתאריך ב-UAS Portal ולהמתין לאישור הנדרש.</div></article><article class="booking-card"><h3>לפני שאני לוקח את הרחפן</h3><div class="stack"><div class="row-card">☐ ביטוח רחפן לתאילנד</div><div class="row-card">☐ רישום CAAT ומספר רישום על הרחפן</div><div class="row-card">☐ מבחן מטיס</div><div class="row-card">☐ רישום NBTC לפי התהליך הרלוונטי</div><div class="row-card">☐ SIM/eSIM תאילנדי שמקבל SMS, אם נדרש לתהליך</div><div class="row-card">☐ UAS Portal בטלפון</div><div class="row-card">☐ לבדוק אזור, תאריך ושעות לפני כל טיסה</div></div></article></section>
 </main>
-
-<nav class="tabs bottom-nav" aria-label="ניווט באפליקציה">
-  <button data-tab="route" class="active"><span>🏠</span><small>בית</small></button>
-  <button data-tab="route"><span>🗺️</span><small>מסלול</small></button>
-  <button data-tab="bookings"><span>🔔</span><small>עדכונים</small></button>
-  <button data-tab="checklist"><span>📄</span><small>מסמכים</small></button>
-  <button data-tab="expenses"><span>•••</span><small>עוד</small></button>
-</nav>
-
-<footer>Thailand Trip 2026</footer>
-<script src="trip-data.js"></script>
-<script src="app.js"></script>
-</body>
-</html>
+<nav class="tabs bottom-nav"><button data-tab="route" class="active"><span>🏠</span><small>בית</small></button><button data-tab="route"><span>🗺️</span><small>מסלול</small></button><button data-tab="bookings"><span>🔔</span><small>עדכונים</small></button><button data-tab="checklist"><span>📄</span><small>מסמכים</small></button><button data-tab="useful"><span>🔗</span><small>קישורים</small></button></nav><footer>Thailand Trip 2026</footer><script src="trip-data.js"></script><script src="app.js"></script></body></html>
