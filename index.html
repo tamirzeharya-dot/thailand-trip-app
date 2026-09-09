@@ -1,29 +1,67 @@
 <!doctype html>
 <html lang="he" dir="rtl">
-<head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><meta name="theme-color" content="#08766b"><title>טיסה לתאילנד 2026</title><link rel="manifest" href="manifest.json"><link rel="stylesheet" href="styles.css"></head>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#087766">
+<title>טיסה לתאילנד 2026</title>
+<link rel="manifest" href="manifest.json">
+<link rel="stylesheet" href="styles-v3.css">
+</head>
 <body>
-<header class="hero tropical-hero"><div class="hero-overlay"></div><div class="hero-inner"><div class="brand-row single"><div class="brand-title"><strong>Thailand 2026</strong><span>🇹🇭</span></div></div><div class="hero-tagline">Adventure Awaits 🌴</div><section class="countdown-panel"><div class="countdown-label"><span class="countdown-plane">✈</span> עד הטיסה נשארו</div><div id="countdownChip" class="countdown-value">טוען...</div></section></div></header>
+<header class="hero">
+  <div class="hero-inner">
+    <div class="brand">Thailand 2026 🇹🇭</div>
+    <div class="tag">המסע שלי בתאילנד</div>
+    <section class="calendar-countdown" aria-label="ספירה לאחור לטיסה">
+      <div class="calendar-top">תאריך הטיסה</div>
+      <div id="countdownDate" class="calendar-date">25.09.2026</div>
+      <div id="countdownClock" class="calendar-clock">טוען...</div>
+      <div class="calendar-label">עד ההמראה מנתב״ג</div>
+    </section>
+  </div>
+</header>
 <main>
-<section class="next-card"><div class="next-head"><div><small>השלב הבא</small><h2 id="nextTitle">הכנות לטיול</h2></div><button class="text-btn" id="updatesBtn">פתח</button></div><div class="next-content"><div class="next-thumb"></div><div class="next-details"><div class="next-flight"><span class="inline-icon">✈</span> המסע שלי</div><strong id="nextTime">25.09.2026 · 15:05</strong><span id="nextText">הכנות, מסמכים ובדיקות לפני היציאה</span><span id="countdownMini" class="mini-pill">הטיול מתקרב</span></div></div><div class="attention-line">🔔 האפליקציה תוביל אותך לפי הסדר: הכנות > יום הטיסה > כל יום בטיול > חזרה.</div></section>
-<section class="flow-heading"><small>המסע שלי</small><h2>פתח לפי הסדר</h2></section>
-<section class="tool-grid journey-grid" aria-label="שלבי הטיול">
-<button id="checkBtn"><span class="tool-icon green"><svg viewBox="0 0 24 24"><rect x="4" y="4" width="16" height="16" rx="3"/><path d="m8 12 3 3 5-6"/></svg></span><b>הכנות</b></button>
-<button class="day-btn" data-date="25.09"><span class="tool-icon blue"><svg viewBox="0 0 24 24"><path d="M22 2 9.6 14.4M15 3l6 0 0 6M9.6 14.4 5 19l-3 0 1.8-3.8L2 12l3 0 4.6 2.4Z"/></svg></span><b>יום הטיסה<br>25.9</b></button>
-<button class="day-btn" data-date="26.09"><span class="tool-icon cyan"><svg viewBox="0 0 24 24"><path d="M20 10c0 5-8 12-8 12S4 15 4 10a8 8 0 1 1 16 0Z"/><circle cx="12" cy="10" r="2.5"/></svg></span><b>26.9<br>קוסמוי וקופנגן</b></button>
-<button class="day-btn" data-date="27.09"><span class="tool-icon mint"><svg viewBox="0 0 24 24"><path d="M4 17h16M6 17l3-8 3 5 3-7 3 10"/></svg></span><b>27.9<br>קוסמוי</b></button>
-<button class="day-btn" data-date="28.09"><span class="tool-icon orange"><svg viewBox="0 0 24 24"><path d="M3 20V9m0 6h18m0 5V11a3 3 0 0 0-3-3h-5v7M7 8h3a3 3 0 0 1 3 3v4H3v-4a3 3 0 0 1 4-3Z"/></svg></span><b>28.9<br>צ'יאנג מאי</b></button>
-<button class="day-btn" data-date="29.09"><span class="tool-icon teal"><svg viewBox="0 0 24 24"><path d="M4 18c4-6 12-6 16 0M7 13c2-4 8-4 10 0M12 4v5"/></svg></span><b>29.9<br>פילים ופאי</b></button>
-<button class="day-btn" data-date="30.09"><span class="tool-icon coral"><svg viewBox="0 0 24 24"><path d="M4 7h4l2-2h4l2 2h4v12H4Z"/><circle cx="12" cy="13" r="4"/></svg></span><b>30.9<br>פאי</b></button>
-<button class="day-btn" data-date="01.10"><span class="tool-icon amber"><svg viewBox="0 0 24 24"><path d="M5 18h14M7 18V8l5-4 5 4v10M10 12h4"/></svg></span><b>1.10<br>בנגקוק</b></button>
-<button class="day-btn" data-date="02.10"><span class="tool-icon green"><svg viewBox="0 0 24 24"><path d="M5 19c2-6 12-6 14 0M8 9h8M12 5v8"/></svg></span><b>2.10<br>בנגקוק חופשי</b></button>
-<button class="day-btn" data-date="03-08.10"><span class="tool-icon cyan"><svg viewBox="0 0 24 24"><path d="M4 12h16M12 4v16"/></svg></span><b>3-8.10<br>פתוח בכוונה</b></button>
-<button class="day-btn" data-date="09.10"><span class="tool-icon blue"><svg viewBox="0 0 24 24"><path d="M22 2 9.6 14.4M15 3l6 0 0 6M9.6 14.4 5 19l-3 0 1.8-3.8L2 12l3 0 4.6 2.4Z"/></svg></span><b>9.10<br>חזרה לישראל</b></button>
-</section>
-<button id="nowBanner" class="thai-vibes-banner now-banner" type="button"><div class="banner-shade"></div><div class="banner-copy"><small>📍 איפה אני עכשיו</small><strong id="nowBannerTitle">הכנות לטיול</strong><span id="nowBannerText">לחץ כדי לראות מה עושים עכשיו</span></div></button>
-<section id="route" class="tab-panel active"><div class="section-head"><div><small>יום אחרי יום</small><h2 id="routeTitle">המסלול שלי</h2></div><div id="routeStats" class="stats"></div></div><div id="routeList" class="timeline"></div></section>
-<section id="documents" class="tab-panel"><div class="section-head"><div><small>פרטי ומאובטח ב-Google Drive</small><h2>המסמכים שלי</h2></div></div><article class="booking-card"><div class="status">🔒 פרטי</div><h3>תיקיית מסמכי הטיול</h3><p>המסמכים נשמרים ב-Google Drive הפרטי שלך. הקישור הציבורי אינו מעניק הרשאה לצפות בקבצים.</p><div class="actions doc-actions"><a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1DXYPW7qUIlh-6Efk6QjmeM6rN_MTwMb8">📂 כל המסמכים</a><a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1NAc7ZXk-oXNRpDgE2hawNH2G0y3TBqQt">✈️ טיסות</a><a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1UibI1ocJ93aIxrKDcp6eUO6LpfhgAyZL">🏨 מלונות</a><a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1J5-iiXo4xnmuTjt-oZ5c6IiANksvqCHt">🚤 תחבורה ומעבורות</a><a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/1Gv4MoQ22b4idNBWsbhlFYUsZngdBded7">🛡️ ביטוח וכניסה</a><a target="_blank" rel="noopener" href="https://drive.google.com/drive/folders/127ACyZLh0T9UDCnRz1LieHKIivKSDZvR">🐘 פעילויות</a></div></article></section>
-<section id="checklist" class="tab-panel"><div class="section-head"><div><small>שלב ראשון במסע</small><h2>הכנות לטיול</h2></div></div><div class="booking-card"><div class="status">לפני הטיסה</div><div id="checklistList" class="stack"></div></div></section>
-<section id="useful" class="tab-panel"><div class="section-head"><div><small>כלים שימושיים בלבד</small><h2>קישורים שימושיים</h2></div></div><article class="booking-card"><div class="status">🚁 רחפן בתאילנד</div><h3>מרכז הרחפן שלי</h3><p>רישום, ביטוח, מבחן, UAS Portal ובדיקת אזור לפני כל הטסה.</p><div class="actions"><a target="_blank" rel="noopener" href="https://www.travelgal.co.il/post/dronethailand">🇮🇱 המדריך של Travel Gal</a><a target="_blank" rel="noopener" href="https://uasportal.caat.or.th/">🇹🇭 CAAT UAS Portal</a><a target="_blank" rel="noopener" href="https://uasportal.caat.or.th/basicKnow">📚 חומר למבחן</a></div></article></section>
+  <section class="intro-card">
+    <small>המסלול שלי</small>
+    <h2>מההכנות ועד החזרה הביתה</h2>
+    <p>כל יום כולל זמן שהות, תחבורה, ניווט, מסמכים, קישורים, בית חב״ד ומרחב חופשי לשינויים.</p>
+  </section>
+
+  <div class="section-title"><small>לפי הסדר</small><h2>בחר את היום</h2></div>
+  <section id="journeyGrid" class="journey-grid" aria-label="ימי הטיול"></section>
+
+  <button id="mapBanner" class="map-banner" type="button">
+    <div class="copy">
+      <small>🗺️ מפת הטיול שלי</small>
+      <strong>כל הנקודות שכבר סגרנו</strong>
+      <span>מלונות, שדות תעופה, פעילויות ותחנות, עם פתיחה ישירה ב-Google Maps</span>
+    </div>
+  </button>
+
+  <div class="section-title"><small>כלים קבועים</small><h2>שימוש מהיר</h2></div>
+  <section class="tools-grid">
+    <button id="mapTool" class="tool-card" type="button"><span class="ico">🗺️</span><b>מפת הטיול</b></button>
+    <button id="docsTool" class="tool-card" type="button"><span class="ico">🎫</span><b>מסמכים לפי יום</b></button>
+    <button id="chabadTool" class="tool-card" type="button"><span class="ico">✡️</span><b>בתי חב״ד</b></button>
+    <button id="trackerTool" class="tool-card" type="button"><span class="ico">🧳</span><b>המזוודה שלי</b></button>
+  </section>
 </main>
-<nav class="bottom-nav" aria-label="כלים קבועים"><button id="homeBtn" class="nav-active"><svg viewBox="0 0 24 24"><path d="M3 11 12 4l9 7v9h-6v-6H9v6H3Z"/></svg><small>בית</small></button><button data-tab="route"><svg viewBox="0 0 24 24"><path d="M4 6l5-2 6 2 5-2v14l-5 2-6-2-5 2Z"/><path d="M9 4v14m6-12v14"/></svg><small>מסלול</small></button><button data-tab="documents"><svg viewBox="0 0 24 24"><path d="M6 3h8l4 4v14H6Z"/><path d="M14 3v5h5M9 12h6m-6 4h6"/></svg><small>מסמכים</small></button><button id="trackerBtn"><svg viewBox="0 0 24 24"><path d="M8 7V5a4 4 0 0 1 8 0v2m-9 0h10a2 2 0 0 1 2 2v11H5V9a2 2 0 0 1 2-2Z"/></svg><small>מזוודה</small></button><button data-tab="useful"><svg viewBox="0 0 24 24"><path d="M10 13a5 5 0 0 0 7 0l2-2a5 5 0 0 0-7-7l-1 1"/><path d="M14 11a5 5 0 0 0-7 0l-2 2a5 5 0 0 0 7 7l1-1"/></svg><small>קישורים</small></button></nav>
-<footer>Thailand Trip 2026</footer><script src="trip-data.js"></script><script src="app.js"></script></body></html>
+
+<section id="detailPanel" class="detail-panel" aria-live="polite">
+  <div id="detailBackdrop"></div>
+  <div class="detail-shell"><div id="detailBody"></div></div>
+</section>
+
+<nav class="bottom-nav" aria-label="ניווט קבוע">
+  <button onclick="window.scrollTo({top:0,behavior:'smooth'})" type="button"><span>⌂</span><small>בית</small></button>
+  <button id="mapToolBottom" onclick="document.getElementById('mapTool').click()" type="button"><span>🗺️</span><small>מפה</small></button>
+  <button onclick="document.getElementById('docsTool').click()" type="button"><span>🎫</span><small>מסמכים</small></button>
+  <button onclick="document.getElementById('trackerTool').click()" type="button"><span>🧳</span><small>מזוודה</small></button>
+  <button id="usefulTool" type="button"><span>✡️</span><small>חב״ד</small></button>
+</nav>
+<footer>Thailand Trip 2026</footer>
+<script src="trip-data-v3.js"></script>
+<script src="app-v3.js"></script>
+</body>
+</html>
