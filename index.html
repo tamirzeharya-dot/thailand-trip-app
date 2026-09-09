@@ -13,49 +13,45 @@
 <header class="hero">
   <div class="hero-inner">
     <div class="brand">Thailand 2026 🇹🇭</div>
-    <div class="tag">המסע שלי בתאילנד</div>
+    <div class="tag">תאילנד | 25.09-09.10.2026</div>
     <section class="calendar-countdown" aria-label="ספירה לאחור לטיסה">
       <div class="calendar-top">תאריך הטיסה</div>
       <div class="calendar-date">25.09.2026</div>
-      <div id="countdownClock" class="calendar-clock">טוען...</div>
+      <div id="countdownDays" class="countdown-days">טוען...</div>
+      <div id="countdownHours" class="countdown-hours"></div>
       <div class="calendar-label">עד ההמראה מנתב״ג</div>
     </section>
   </div>
 </header>
 <main>
-  <div class="section-title"><small>המסע שלי לפי הסדר</small><h2>כל הימים</h2></div>
   <section id="journeyGrid" class="journey-grid" aria-label="ימי הטיול"></section>
-
   <section id="inlinePanel" class="inline-panel" aria-live="polite"></section>
 
   <button id="mapBanner" class="map-banner" type="button">
     <div class="copy">
-      <small>🗺️ מפת הטיול שלי</small>
-      <strong>כל המקומות שכבר סגרנו</strong>
-      <span>מפה אינטראקטיבית עם מלונות, שדות תעופה, תחנות ופעילויות לפי מספרי המסע</span>
+      <small>🗺️ מפה אינטראקטיבית</small>
+      <strong>מפת הטיול שלי</strong>
+      <span>כל הנקודות במסלול, לפי מספר, סוג מקום והתקדמות בטיול</span>
     </div>
   </button>
 
   <section id="mapSection" class="map-section" aria-live="polite">
-    <div class="map-top"><div><small>מפת הטיול</small><h2>הנקודות שלי בתאילנד</h2><p>המספור הוא לפי סדר המסע. לחץ על סמן כדי לפתוח ניווט ב-Google Maps.</p></div><button id="closeMap" class="close-red" type="button">סגור</button></div>
+    <div class="map-top"><div><small>מפת הטיול</small><h2>מפת הטיול שלי</h2><p>לחץ על נקודה ברשימה או על סמן כדי למקד אותה במפה ולפתוח ניווט.</p></div><button id="closeMap" class="close-red" type="button">סגור</button></div>
     <div id="tripMap" class="trip-map"></div>
     <div id="mapStatus" class="map-status"></div>
     <div id="mapLegend" class="map-legend"></div>
   </section>
 
-  <div class="section-title"><small>כלים קבועים</small><h2>שימוש מהיר</h2></div>
-  <section class="tools-grid">
+  <section class="tools-grid secondary-tools">
     <button id="mapTool" class="tool-card" type="button"><span class="ico">🗺️</span><b>מפת הטיול</b></button>
-    <button id="docsTool" class="tool-card" type="button"><span class="ico">🎫</span><b>מסמכים לפי יום</b></button>
+    <button id="docsTool" class="tool-card" type="button"><span class="ico">🎫</span><b>מסמכים</b></button>
     <button id="chabadTool" class="tool-card" type="button"><span class="ico">✡️</span><b>בתי חב״ד</b></button>
-    <button id="trackerTool" class="tool-card" type="button"><span class="ico">🧳</span><b>המזוודה שלי</b></button>
   </section>
 </main>
 <nav class="bottom-nav" aria-label="ניווט קבוע">
   <button onclick="window.scrollTo({top:0,behavior:'smooth'})" type="button"><span>⌂</span><small>בית</small></button>
   <button onclick="document.getElementById('mapTool').click()" type="button"><span>🗺️</span><small>מפה</small></button>
   <button onclick="document.getElementById('docsTool').click()" type="button"><span>🎫</span><small>מסמכים</small></button>
-  <button onclick="document.getElementById('trackerTool').click()" type="button"><span>🧳</span><small>מזוודה</small></button>
   <button onclick="document.getElementById('chabadTool').click()" type="button"><span>✡️</span><small>חב״ד</small></button>
 </nav>
 <footer>Thailand Trip 2026</footer>
