@@ -7,8 +7,8 @@
 <title>טיסה לתאילנד 2026</title>
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-<link rel="stylesheet" href="styles-v5.css?v=20260909-1136">
-<link rel="stylesheet" href="compact-mobile.css?v=20260909-1136">
+<link rel="stylesheet" href="styles-v5.css?v=20260909-1205">
+<link rel="stylesheet" href="compact-mobile.css?v=20260909-1205">
 </head>
 <body>
 <header class="hero"><div class="hero-inner"><div class="brand">Thailand 2026 🇹🇭</div><div class="tag">תאילנד | 25.09-09.10.2026</div><section class="calendar-countdown" aria-label="ספירה לאחור לטיסה"><div class="calendar-top">תאריך הטיסה</div><div class="calendar-date">25.09.2026</div><div id="countdownDays" class="countdown-days">טוען...</div><div id="countdownHours" class="countdown-hours"></div><div class="calendar-label">עד ההמראה מנתב״ג</div></section></div></header>
@@ -17,13 +17,14 @@
 <section id="inlinePanel" class="inline-panel" aria-live="polite"></section>
 <button id="mapBanner" class="map-banner" type="button"><div class="copy"><small>🗺️ מפה אינטראקטיבית</small><strong>מפת הטיול שלי</strong><span>כל הנקודות במסלול לפי מספר וסדר הטיול</span></div></button>
 <section id="mapSection" class="map-section" aria-live="polite"><div class="map-top"><div><small>מפת הטיול</small><h2>מפת הטיול שלי</h2><p>לחץ על נקודה ברשימה או על סמן כדי למקד אותה במפה ולפתוח ניווט.</p></div><button id="closeMap" class="close-red" type="button">סגור</button></div><div id="tripMap" class="trip-map"></div><div id="mapStatus" class="map-status"></div><div id="mapLegend" class="map-legend"></div></section>
-<section class="tools-grid secondary-tools"><button id="mapTool" class="tool-card" type="button"><span class="ico">🗺️</span><b>מפת הטיול</b></button><button id="docsTool" class="tool-card" type="button"><span class="ico">🎫</span><b>מסמכים</b></button><button id="chabadTool" class="tool-card" type="button"><span class="ico">✡️</span><b>בתי חב״ד</b></button></section>
+<section class="tools-grid secondary-tools"><button id="alertsTool" class="tool-card" type="button" onclick="openAlerts()"><span class="ico">🔔</span><b>התראות</b></button><button id="mapTool" class="tool-card" type="button"><span class="ico">🗺️</span><b>מפת הטיול</b></button><button id="docsTool" class="tool-card" type="button"><span class="ico">🎫</span><b>מסמכים</b></button><button id="chabadTool" class="tool-card" type="button"><span class="ico">✡️</span><b>בתי חב״ד</b></button></section>
 </main>
 <nav class="bottom-nav" aria-label="ניווט קבוע"><button onclick="window.scrollTo({top:0,behavior:'smooth'})" type="button"><span>⌂</span><small>בית</small></button><button onclick="document.getElementById('mapTool').click()" type="button"><span>🗺️</span><small>מפה</small></button><button onclick="document.getElementById('docsTool').click()" type="button"><span>🎫</span><small>מסמכים</small></button><button onclick="document.getElementById('chabadTool').click()" type="button"><span>✡️</span><small>חב״ד</small></button></nav>
 <footer>Thailand Trip 2026</footer>
 <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-<script src="trip-data-v3.js?v=20260909-1136"></script>
-<script src="app-v5.js?v=20260909-1136"></script>
-<script src="ui-patch.js?v=20260909-1136"></script>
+<script src="trip-data-v3.js?v=20260909-1205"></script>
+<script src="app-v5.js?v=20260909-1205"></script>
+<script src="ui-patch.js?v=20260909-1205"></script>
+<script src="alerts-poi.js?v=20260909-1205"></script>
 </body>
 </html>
