@@ -3,31 +3,47 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
-<meta name="theme-color" content="#0a6a5a">
+<meta name="theme-color" content="#f7f8fb">
 <title>טיסה לתאילנד 2026</title>
 <link rel="manifest" href="manifest.json">
 <link rel="stylesheet" href="styles.css">
 </head>
 <body>
 <header class="hero">
-  <div class="hero-shade"></div>
-  <div class="hero-content">
-    <div class="hero-topline"><span class="flag">🇹🇭</span><span>THAILAND 2026</span></div>
-    <h1 id="appTitle"></h1>
-    <p id="appSubtitle"></p>
-    <div class="hero-chips">
-      <span>✈️ 25.09</span><span>🏝️ 13 ימים</span><span id="countdownChip">⏳ טוען...</span>
+  <div class="hero-inner">
+    <div class="brand-row"><div><span class="flag">🇹🇭</span><strong>Thailand 2026</strong></div><span class="trip-dates">25.09 > 09.10</span></div>
+    <div class="hero-copy">
+      <small>הטיול שלי</small>
+      <h1 id="appTitle"></h1>
+      <p id="appSubtitle"></p>
     </div>
   </div>
 </header>
 
 <main>
+  <section class="next-card">
+    <div class="next-head"><div><small>הדבר הבא</small><h2>✈️ יוצאים לתאילנד</h2></div><span id="countdownChip" class="countdown">טוען...</span></div>
+    <div class="next-grid">
+      <div><span>יציאה</span><strong>25.09 · 15:05</strong></div>
+      <div><span>יעד ראשון</span><strong>בנגקוק (Bangkok)</strong></div>
+      <div><span>חזרה</span><strong>09.10 · 11:10</strong></div>
+    </div>
+    <div class="attention-line">🔔 תמיד תראה כאן מה היעד הבא, מתי יוצאים ומה דורש תשומת לב.</div>
+  </section>
+
+  <section class="quick-tools" aria-label="כלים קבועים">
+    <button id="trackerBtn"><span>🧳</span><b>המזוודה שלי</b></button>
+    <button id="ticketsBtn"><span>🎫</span><b>הכרטיסים שלי</b></button>
+    <button id="updatesBtn"><span>🔔</span><b>עדכונים</b></button>
+    <button id="chatBtn"><span>🤖</span><b>עזרה מ-ChatGPT</b></button>
+  </section>
+
   <section class="overview-card">
-    <div class="overview-title"><div><small>הטיול שלי</small><h2>תאילנד, ספטמבר 2026</h2></div><div class="plane-bubble">✈️</div></div>
+    <div class="overview-title"><div><small>תמונת מצב</small><h2>הטיול במבט אחד</h2></div></div>
     <div class="overview-grid">
-      <div><strong id="confirmedCount">0</strong><span>סגור</span></div>
-      <div><strong id="openCount">0</strong><span>פתוח</span></div>
-      <div><strong>09.10</strong><span>חזרה</span></div>
+      <div><strong id="confirmedCount">0</strong><span>קטעים סגורים</span></div>
+      <div><strong id="openCount">0</strong><span>דורשים טיפול</span></div>
+      <div><strong>13</strong><span>ימי טיול</span></div>
     </div>
   </section>
 
@@ -59,7 +75,6 @@
   </section>
 </main>
 
-<button id="trackerBtn" class="tracker-fab" aria-label="איתור המזוודה"><span>🧳</span><b>המזוודה שלי</b></button>
 <footer>Thailand Trip 2026</footer>
 <script src="trip-data.js"></script>
 <script src="app.js"></script>
