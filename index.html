@@ -6,7 +6,8 @@
 <meta name="theme-color" content="#087766">
 <title>טיסה לתאילנד 2026</title>
 <link rel="manifest" href="manifest.json">
-<link rel="stylesheet" href="styles-v3.css">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
+<link rel="stylesheet" href="styles-v4.css">
 </head>
 <body>
 <header class="hero">
@@ -15,29 +16,32 @@
     <div class="tag">המסע שלי בתאילנד</div>
     <section class="calendar-countdown" aria-label="ספירה לאחור לטיסה">
       <div class="calendar-top">תאריך הטיסה</div>
-      <div id="countdownDate" class="calendar-date">25.09.2026</div>
+      <div class="calendar-date">25.09.2026</div>
       <div id="countdownClock" class="calendar-clock">טוען...</div>
       <div class="calendar-label">עד ההמראה מנתב״ג</div>
     </section>
   </div>
 </header>
 <main>
-  <section class="intro-card">
-    <small>המסלול שלי</small>
-    <h2>מההכנות ועד החזרה הביתה</h2>
-    <p>כל יום כולל זמן שהות, תחבורה, ניווט, מסמכים, קישורים, בית חב״ד ומרחב חופשי לשינויים.</p>
-  </section>
-
-  <div class="section-title"><small>לפי הסדר</small><h2>בחר את היום</h2></div>
+  <div class="section-title"><small>המסע שלי לפי הסדר</small><h2>כל הימים</h2></div>
   <section id="journeyGrid" class="journey-grid" aria-label="ימי הטיול"></section>
+
+  <section id="inlinePanel" class="inline-panel" aria-live="polite"></section>
 
   <button id="mapBanner" class="map-banner" type="button">
     <div class="copy">
       <small>🗺️ מפת הטיול שלי</small>
-      <strong>כל הנקודות שכבר סגרנו</strong>
-      <span>מלונות, שדות תעופה, פעילויות ותחנות, עם פתיחה ישירה ב-Google Maps</span>
+      <strong>כל המקומות שכבר סגרנו</strong>
+      <span>מפה אינטראקטיבית עם מלונות, שדות תעופה, תחנות ופעילויות לפי מספרי המסע</span>
     </div>
   </button>
+
+  <section id="mapSection" class="map-section" aria-live="polite">
+    <div class="map-top"><div><small>מפת הטיול</small><h2>הנקודות שלי בתאילנד</h2><p>המספור הוא לפי סדר המסע. לחץ על סמן כדי לפתוח ניווט ב-Google Maps.</p></div><button id="closeMap" class="close-red" type="button">סגור</button></div>
+    <div id="tripMap" class="trip-map"></div>
+    <div id="mapStatus" class="map-status"></div>
+    <div id="mapLegend" class="map-legend"></div>
+  </section>
 
   <div class="section-title"><small>כלים קבועים</small><h2>שימוש מהיר</h2></div>
   <section class="tools-grid">
@@ -47,12 +51,6 @@
     <button id="trackerTool" class="tool-card" type="button"><span class="ico">🧳</span><b>המזוודה שלי</b></button>
   </section>
 </main>
-
-<section id="detailPanel" class="detail-panel" aria-live="polite">
-  <div id="detailBackdrop"></div>
-  <div class="detail-shell"><div id="detailBody"></div></div>
-</section>
-
 <nav class="bottom-nav" aria-label="ניווט קבוע">
   <button onclick="window.scrollTo({top:0,behavior:'smooth'})" type="button"><span>⌂</span><small>בית</small></button>
   <button onclick="document.getElementById('mapTool').click()" type="button"><span>🗺️</span><small>מפה</small></button>
@@ -61,7 +59,8 @@
   <button onclick="document.getElementById('chabadTool').click()" type="button"><span>✡️</span><small>חב״ד</small></button>
 </nav>
 <footer>Thailand Trip 2026</footer>
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 <script src="trip-data-v3.js"></script>
-<script src="app-v3.js"></script>
+<script src="app-v4.js"></script>
 </body>
 </html>
