@@ -9,7 +9,7 @@ mapPoints:[
 ['ארון ראווי (Arun Rawee)','https://www.google.com/maps/search/?api=1&query=Arun+Rawee+Chiang+Mai'],
 ['אלפנט נייצ׳ר פארק (Elephant Nature Park)','https://www.google.com/maps/search/?api=1&query=Elephant+Nature+Park+Chiang+Mai'],
 ['צ׳יאנג מאי ארקייד 2 (Chiang Mai Arcade 2)','https://www.google.com/maps/search/?api=1&query=Chiang+Mai+Arcade+Bus+Terminal+2'],
-['רברי סיאם ריזורט (Reverie Siam Resort)','https://www.google.com/maps/search/?api=1&query=Reverie+Siam+Resort+Pai'],
+
 ['פאי זיפליין (Pai Zipline)','https://www.google.com/maps/search/?api=1&query=Pai+Zipline+Thailand'],
 ['פולמן בנגקוק הוטל ג׳י (Pullman Bangkok Hotel G)','https://www.google.com/maps/search/?api=1&query=Pullman+Bangkok+Hotel+G']
 ],
