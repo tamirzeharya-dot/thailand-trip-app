@@ -1,28 +1,30 @@
 (()=>{
 const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-const alerts=[
- ['26.09','קופנגן (Koh Phangan)','פול מון פארטי (Full Moon Party)','לוודא סמוך לאירוע את תנאי הכניסה, המחיר והמיקום הרשמי.'],
- ['26.09','קוסמוי (Koh Samui)','רציף המעבורת','🟠 הרציף המדויק בקוסמוי עדיין דורש אימות.'],
- ['27.09','קופנגן (Koh Phangan)','מעבורת לקוסמוי — 16:00','🔴 פתוח: להשלים תשלום ואישור למעבורת Haadrin Queen של 16:00 לקוסמוי.'],
- ['29.09','צ׳יאנג מאי (Chiang Mai)','Elephant Nature Park','יתרת תשלום 1,750 באט טרם שולמה.'],
- ['30.09','פאי (Pai)','פאי זיפליין (Pai Zipline)','🟠 לוודא/לסגור הסעה מ-Reverie Siam לפעילות.'],
- ['01.10','פאי (Pai)','מיניוואן לצ׳יאנג מאי','🔴 הנסיעה המועדפת 09:00 טרם הוזמנה.'],
- ['03-08.10','תאילנד','לינה והמשך המסלול','🔴 הימים 3-8.10 עדיין פתוחים בכוונה ודורשים החלטה.']
+const tasks=[
+ {date:'16.09',place:'מודיעין',title:'תור חיסוני מטיילים בשעה 17:00',status:'open',detail:'להגיע עם פנקסי החיסונים ולבדוק הפטיטיס A, טיפוס הבטן וטטנוס/שעלת.'},
+ {date:'לפני הטיסה',place:'מסמכים',title:'דרכון ומסמכי חיסונים נשמרו',status:'done',detail:'הדרכון, פנקסי החיסונים והצילומים נמצאים במסמכים החשובים.'},
+ {date:'24.09',place:'לפני הכניסה לתאילנד',title:'מילוי TDAC',status:'open',detail:'למלא את הטופס הרשמי ולשמור צילום מסך או PDF של האישור.'},
+ {date:'25.09',place:'נתב״ג',title:'טיסת Etihad לתאילנד',status:'done',detail:'הטיסה הבינלאומית סגורה. לוודא בשדה שתג הכבודה ממשיך עד בנגקוק.'},
+ {date:'26.09',place:'קוסמוי ← קופנגן',title:'מעבורת הלוך בשעה 15:00',status:'done',detail:'הכרטיס מאושר ומשולם. להגיע לרציף בזמן עם השובר.'},
+ {date:'26.09',place:'האד רין, קופנגן',title:'Little Paradise',status:'done',detail:'המלון לליל ה-Full Moon סגור.'},
+ {date:'27.09',place:'קופנגן ← קוסמוי',title:'מעבורת חזרה בשעה 16:00',status:'done',detail:'PAID ומאושר. הזמנה 12GO32904233. להגיע ל-Haad Rin Pier בשעה 15:15.'},
+ {date:'27.09',place:'קוסמוי',title:'Samui Pier Beach Front Resort',status:'done',detail:'הזמנה 22453 מאושרת ללילה אחד, 27-28.9.'},
+ {date:'27.09',place:'Samui Pier Beach Front Resort',title:'לוודא מונית לשדה לבוקר',status:'open',detail:'לבקש מהקבלה לאשר מונית ל-28.9 בשעה 06:45.'},
+ {date:'28.09',place:'קוסמוי ← צ׳יאנג מאי',title:'טיסה PG241 בשעה 08:55',status:'done',detail:'הטיסה סגורה. יציאה מהמלון במונית בשעה 06:45.'},
+ {date:'28.09',place:'צ׳יאנג מאי',title:'Rawee Arun Hotel',status:'done',detail:'המלון בצ׳יאנג מאי סגור.'},
+ {date:'28.09',place:'פאי',title:'להזמין מלון ללילה שמתחיל ב-29.9',status:'open',detail:'אפשר לסגור יום קודם לפי הזמינות. לא הוגדר עדיין מלון סופי.'},
+ {date:'29.09',place:'Rawee Arun Hotel',title:'לתאם שמירת המזוודה',status:'open',detail:'לבקש בקבלה בבוקר לשמור את המזוודה הגדולה ולקחת לפאי תיק קטן.'},
+ {date:'29.09',place:'צ׳יאנג מאי',title:'Elephant Nature Park',status:'done',detail:'הפעילות סגורה. איסוף 07:30-08:00 וחזרה סביב 14:30 אושרו במייל.'},
+ {date:'29.09',place:'חזרה מהפילים',title:'להזמין Grab ל-Arcade 2',status:'open',detail:'להזמין Grab כשמתקרבים למלון ולצאת לתחנה עד 15:15.'},
+ {date:'29.09',place:'Chiang Mai Arcade 2 ← Pai',title:'מיניוואן לפאי בשעה 16:30',status:'done',detail:'הכרטיס מאושר. להגיע לתחנה עד 15:45. הגעה משוערת לפאי 20:50.'},
+ {date:'01.10',place:'פאי ← צ׳יאנג מאי',title:'נסיעה חזרה לצ׳יאנג מאי',status:'open',detail:'עדיין לא הוזמנה. שעה מועדפת 09:00.'},
+ {date:'03-08.10',place:'תאילנד',title:'לינה והמשך המסלול',status:'open',detail:'הימים נשארו פתוחים בכוונה וייסגרו בהתאם להתקדמות.'}
 ];
-const poi={
- '26.09':[['🎉','פול מון פארטי (Full Moon Party)','Haad Rin Nok Koh Phangan'],['🏖️','חוף האד רין נוק (Haad Rin Nok)','Haad Rin Nok Koh Phangan'],['🍽️','מסעדות וברים בהאד רין (Haad Rin)','restaurants bars Haad Rin Koh Phangan']],
- '27.09':[['🏖️','חוף האד רין (Haad Rin)','Haad Rin Koh Phangan'],['🍽️','אוכל וברים בהאד רין (Haad Rin)','restaurants bars Haad Rin Koh Phangan'],['🌴','בנגראק ביץ׳ (Bangrak Beach)','Bangrak Beach Koh Samui']],
- '28.09':[['🌙','נייט בזאר (Night Bazaar)','Chiang Mai Night Bazaar'],['🏳️‍🌈','אזור חיי הלילה הגאים בנייט בזאר','gay nightlife Night Bazaar Chiang Mai'],['💃','6ixcret Show','6ixcret Show Chiang Mai']],
- '29.09':[['🐘','אלפנט נייצ׳ר פארק (Elephant Nature Park)','Elephant Nature Park Chiang Mai'],['🌙','שוק הלילה פאי (Pai Walking Street)','Pai Walking Street'],['🍸','ברים ומוזיקה חיה בפאי (Pai)','bars live music Pai Thailand']],
- '30.09':[['🧗','פאי זיפליין (Pai Zipline)','Pai Zipline Thailand'],['🌙','שוק הלילה פאי (Pai Walking Street)','Pai Walking Street'],['☕','בתי קפה קרובים בפאי (Pai)','cafes Pai Thailand']],
- '01.10':[['🏙️','סילום (Silom)','Silom Bangkok'],['🏳️‍🌈','סילום סוי 4 (Silom Soi 4)','Silom Soi 4 Bangkok'],['💃','האוס אוף הילס (House Of Heals)','House Of Heals Bangkok']],
- '02.10':[['🏳️‍🌈','סילום סוי 4 (Silom Soi 4)','Silom Soi 4 Bangkok'],['🎵','סילום סוי 2 (Silom Soi 2)','Silom Soi 2 Bangkok'],['💃','האוס אוף הילס (House Of Heals)','House Of Heals Bangkok'],['🍽️','מסעדות ליד Pullman Bangkok Hotel G','restaurants near Pullman Bangkok Hotel G']],
- '03-08.10':[['📍','נקודות עניין קרובות אליי','tourist attractions Thailand'],['🍽️','מסעדות קרובות אליי','restaurants Thailand'],['🏳️‍🌈','חיי לילה גאים','gay nightlife Thailand']]
-};
+const poi={'26.09':[['🎉','פול מון פארטי','Haad Rin Nok Koh Phangan']], '27.09':[['🏖️','חוף האד רין','Haad Rin Koh Phangan'],['🌴','בנגראק ביץ׳','Bangrak Beach Koh Samui']], '28.09':[['🌙','נייט בזאר','Chiang Mai Night Bazaar']], '29.09':[['🐘','Elephant Nature Park','Elephant Nature Park Chiang Mai'],['🌙','שוק הלילה פאי','Pai Walking Street']]};
 function maps(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q)}
-function alertCard(day){const a=alerts.filter(x=>x[0]===day);if(!a.length)return '<section class="info-card"><h3>🔔 תזכורות פתוחות</h3><p>🟢 אין כרגע משימה פתוחה ליום הזה.</p></section>';return `<section class="info-card"><h3>🔔 תזכורות פתוחות</h3>${a.map(x=>`<div class="trip-alert"><b>${esc(x[2])}</b><small>${esc(x[1])}</small><p>${esc(x[3])}</p></div>`).join('')}</section>`}
-function poiCard(day){const a=poi[day]||[];if(!a.length)return '';return `<section class="info-card"><h3>📍 נקודות עניין קרובות</h3><p>המלצות אופציונליות ליד היעד. לחץ לפתיחה במפות Google.</p><div class="poi-list">${a.map(x=>`<a href="${maps(x[2])}" target="_blank" rel="noopener"><span>${x[0]}</span><b>${esc(x[1])}</b><small>פתח במפות Google</small></a>`).join('')}</div></section>`}
-function enhance(){const p=$('#inlinePanel');if(!p||!p.classList.contains('show'))return;const day=document.querySelector('.day-tile.active')?.dataset.day||window.__currentTripDay;if(!day)return;if(!p.querySelector('.trip-alerts-added')){const wrap=document.createElement('div');wrap.className='trip-alerts-added';wrap.innerHTML=alertCard(day)+poiCard(day);const flex=[...p.querySelectorAll('.info-card')].find(x=>x.textContent.includes('זמן חופשי'));if(flex)p.insertBefore(wrap,flex);else p.appendChild(wrap);}}
-const old=window.openDay;if(typeof old==='function'){window.openDay=function(id){window.__currentTripDay=id;document.querySelectorAll('.day-tile').forEach(x=>x.classList.toggle('active',x.dataset.day===id));old(id);setTimeout(enhance,0)};document.querySelectorAll('.day-tile[data-day]').forEach(b=>b.onclick=()=>window.openDay(b.dataset.day));}
-window.openAlerts=function(){const p=$('#inlinePanel');p.innerHTML=`<div class="inline-head"><div><small>לפי היום הרלוונטי</small><h2>🔔 מרכז התראות</h2></div><button id="closeAlerts" class="close-red" type="button">סגור</button></div><section class="info-card">${alerts.map(x=>`<div class="trip-alert"><b>${esc(x[0])} · ${esc(x[2])}</b><small>${esc(x[1])}</small><p>${esc(x[3])}</p></div>`).join('')}</section>`;p.classList.add('show');$('#closeAlerts').onclick=()=>{p.classList.remove('show');p.innerHTML=''};p.scrollIntoView({behavior:'smooth',block:'start'});}
+function taskCard(day){const a=tasks.filter(x=>x.date===day);if(!a.length)return '<section class="info-card"><h3>📋 משימות</h3><p>🟢 אין כרגע משימה פתוחה ליום הזה.</p></section>';return '<section class="info-card"><h3>📋 משימות</h3>'+a.map(x=>'<div class="trip-alert"><b>'+(x.status==='done'?'🟢':'🔴')+' '+esc(x.title)+'</b><small>'+esc(x.place)+'</small><p>'+esc(x.detail)+'</p></div>').join('')+'</section>'}
+function poiCard(day){const a=poi[day]||[];if(!a.length)return '';return '<section class="info-card"><h3>📍 נקודות עניין קרובות</h3><div class="poi-list">'+a.map(x=>'<a href="'+maps(x[2])+'" target="_blank" rel="noopener"><span>'+x[0]+'</span><b>'+esc(x[1])+'</b><small>פתח במפות Google</small></a>').join('')+'</div></section>'}
+function enhance(){const p=$('#inlinePanel');if(!p||!p.classList.contains('show'))return;const day=document.querySelector('.day-tile.active')?.dataset.day||window.__currentTripDay;if(!day)return;if(!p.querySelector('.trip-alerts-added')){const wrap=document.createElement('div');wrap.className='trip-alerts-added';wrap.innerHTML=taskCard(day)+poiCard(day);const flex=[...p.querySelectorAll('.info-card')].find(x=>x.textContent.includes('זמן חופשי'));if(flex)p.insertBefore(wrap,flex);else p.appendChild(wrap)}}
+const old=window.openDay;if(typeof old==='function'){window.openDay=function(id){window.__currentTripDay=id;document.querySelectorAll('.day-tile').forEach(x=>x.classList.toggle('active',x.dataset.day===id));old(id);setTimeout(enhance,0)};document.querySelectorAll('.day-tile[data-day]').forEach(b=>b.onclick=()=>window.openDay(b.dataset.day))}
+window.openAlerts=function(){const p=$('#inlinePanel'),open=tasks.filter(x=>x.status==='open'),done=tasks.filter(x=>x.status==='done');p.innerHTML='<div class="inline-head"><div><small>'+done.length+' סגורות · '+open.length+' פתוחות</small><h2>📋 מרכז משימות</h2></div><button id="closeAlerts" class="close-red" type="button">סגור</button></div><section class="info-card"><h3>🔴 משימות פתוחות</h3>'+open.map(x=>'<div class="trip-alert"><b>'+esc(x.date)+' · '+esc(x.title)+'</b><small>'+esc(x.place)+'</small><p>'+esc(x.detail)+'</p></div>').join('')+'</section><section class="info-card"><h3>🟢 סגור ומאושר</h3>'+done.map(x=>'<div class="trip-alert"><b>'+esc(x.date)+' · '+esc(x.title)+'</b><small>'+esc(x.place)+'</small><p>'+esc(x.detail)+'</p></div>').join('')+'</section>';p.classList.add('show');$('#closeAlerts').onclick=()=>{p.classList.remove('show');p.innerHTML=''};p.scrollIntoView({behavior:'smooth',block:'start'})}
 })();
