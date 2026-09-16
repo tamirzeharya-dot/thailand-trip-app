@@ -26,3 +26,7 @@
 /* Breathing room between the trip title and live journey details */
 .journey-status{margin-top:20px}
 @media(max-width:600px){.journey-status{margin-top:18px}.hero{min-height:150px}}
+
+/* Final title-to-status spacing: about two mobile text lines */
+.journey-status{margin-top:38px}
+@media(max-width:600px){.journey-status{margin-top:36px}.hero{min-height:168px}}
