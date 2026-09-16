@@ -12,3 +12,13 @@
 
 .important-actions{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin-top:8px}.important-actions button,.important-actions a{min-width:0;border:1px solid #dce9e5;border-radius:12px;background:#f2faf7;color:var(--ink);padding:10px 6px;text-align:center;text-decoration:none;font-family:inherit;cursor:pointer}.important-actions span{display:block;font-size:24px}.important-actions b{display:block;font-size:12px;margin-top:3px}.important-actions small{display:block;font-size:9px;color:var(--muted);margin-top:2px;line-height:1.25}
 @media(max-width:430px){.important-actions{gap:6px}.important-actions button,.important-actions a{padding:9px 4px}.important-actions span{font-size:22px}}
+
+/* Compact transparent top status over the hero image */
+.hero{min-height:140px;padding:10px 14px 12px}
+.hero-inner{width:100%}
+.journey-status{margin:7px auto 0;width:min(430px,92vw);padding:3px 8px 4px;border:0;border-radius:0;background:transparent;box-shadow:none;backdrop-filter:none;text-align:center}
+.status-top{justify-content:center;gap:18px;color:#fff;font-size:11px;text-shadow:0 2px 7px rgba(0,0,0,.95)}
+.status-title{font-size:19px;margin-top:4px;text-shadow:0 2px 8px rgba(0,0,0,.98),0 0 3px rgba(0,0,0,.9)}
+.status-meta{font-size:12px;margin-top:2px;color:#fff;text-shadow:0 2px 7px rgba(0,0,0,.98)}
+.status-countdown{margin-top:4px;padding:0;background:transparent;font-size:11px;text-shadow:0 2px 7px rgba(0,0,0,.98)}
+@media(max-width:600px){.hero{min-height:132px;padding:8px 10px 10px}.brand{font-size:21px}.tag{font-size:13px}.journey-status{margin-top:5px}.status-title{font-size:17px}.status-meta{font-size:11px}}
