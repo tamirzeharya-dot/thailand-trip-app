@@ -22,3 +22,7 @@
 .status-meta{font-size:12px;margin-top:2px;color:#fff;text-shadow:0 2px 7px rgba(0,0,0,.98)}
 .status-countdown{margin-top:4px;padding:0;background:transparent;font-size:11px;text-shadow:0 2px 7px rgba(0,0,0,.98)}
 @media(max-width:600px){.hero{min-height:132px;padding:8px 10px 10px}.brand{font-size:21px}.tag{font-size:13px}.journey-status{margin-top:5px}.status-title{font-size:17px}.status-meta{font-size:11px}}
+
+/* Breathing room between the trip title and live journey details */
+.journey-status{margin-top:20px}
+@media(max-width:600px){.journey-status{margin-top:18px}.hero{min-height:150px}}
