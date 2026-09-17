@@ -1,6 +1,6 @@
 (()=>{
 const $=s=>document.querySelector(s), esc=s=>String(s??'').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
-const tasks=[
+const defaultTasks=[
  {date:'16.09',place:'מודיעין',title:'תור חיסוני מטיילים בשעה 17:00',status:'open',detail:'להגיע עם פנקסי החיסונים ולבדוק הפטיטיס A, טיפוס הבטן וטטנוס/שעלת.'},
  {date:'לפני הטיסה',place:'מסמכים',title:'דרכון ומסמכי חיסונים נשמרו',status:'done',detail:'הדרכון, פנקסי החיסונים והצילומים נמצאים במסמכים החשובים.'},
  {date:'24.09',place:'לפני הכניסה לתאילנד',title:'מילוי TDAC',status:'open',detail:'למלא את הטופס הרשמי ולשמור צילום מסך או PDF של האישור.'},
@@ -20,11 +20,34 @@ const tasks=[
  {date:'01.10',place:'פאי ← צ׳יאנג מאי',title:'נסיעה חזרה לצ׳יאנג מאי',status:'open',detail:'עדיין לא הוזמנה. שעה מועדפת 09:00.'},
  {date:'03-08.10',place:'תאילנד',title:'לינה והמשך המסלול',status:'open',detail:'הימים נשארו פתוחים בכוונה וייסגרו בהתאם להתקדמות.'}
 ];
+const TASKS_STATE_KEY='thailand-trip-tasks-v1';
+defaultTasks.forEach((task,index)=>task.id='trip-task-'+index);
+function loadTaskState(){
+ try{return JSON.parse(localStorage.getItem(TASKS_STATE_KEY)||'{}')||{}}
+ catch(_){return {}}
+}
+let taskState=loadTaskState();
+function saveTaskState(){localStorage.setItem(TASKS_STATE_KEY,JSON.stringify(taskState))}
+function tasks(){return defaultTasks.filter(task=>!taskState[task.id]?.deleted).map(task=>({...task,status:taskState[task.id]?.status||task.status}))}
 const poi={'26.09':[['🎉','פול מון פארטי','Haad Rin Nok Koh Phangan']], '27.09':[['🏖️','חוף האד רין','Haad Rin Koh Phangan'],['🌴','בנגראק ביץ׳','Bangrak Beach Koh Samui']], '28.09':[['🌙','נייט בזאר','Chiang Mai Night Bazaar']], '29.09':[['🐘','Elephant Nature Park','Elephant Nature Park Chiang Mai'],['🌙','שוק הלילה פאי','Pai Walking Street']]};
 function maps(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q)}
-function taskCard(day){const a=tasks.filter(x=>x.date===day);if(!a.length)return '<section class="info-card"><h3>📋 משימות</h3><p>🟢 אין כרגע משימה פתוחה ליום הזה.</p></section>';return '<section class="info-card"><h3>📋 משימות</h3>'+a.map(x=>'<div class="trip-alert"><b>'+(x.status==='done'?'🟢':'🔴')+' '+esc(x.title)+'</b><small>'+esc(x.place)+'</small><p>'+esc(x.detail)+'</p></div>').join('')+'</section>'}
+function taskActions(task){return '<div class="task-actions">'+(task.status==='open'?'<button class="task-done" data-task-id="'+task.id+'" type="button">✓ בוצע</button>':'')+'<button class="task-delete" data-task-id="'+task.id+'" type="button">🗑️ מחיקה</button></div>'}
+function taskMarkup(task,showDate=false){return '<div class="trip-alert" data-task-card="'+task.id+'"><b>'+(task.status==='done'?'🟢 ':'🔴 ')+(showDate?esc(task.date)+' · ':'')+esc(task.title)+'</b><small>'+esc(task.place)+'</small><p>'+esc(task.detail)+'</p>'+taskActions(task)+'</div>'}
+function taskCard(day){const a=tasks().filter(x=>x.date===day);if(!a.length)return '<section class="info-card"><h3>📋 משימות</h3><p>🟢 אין כרגע משימה ליום הזה.</p></section>';return '<section class="info-card"><h3>📋 משימות</h3>'+a.map(x=>taskMarkup(x)).join('')+'</section>'}
 function poiCard(day){const a=poi[day]||[];if(!a.length)return '';return '<section class="info-card"><h3>📍 נקודות עניין קרובות</h3><div class="poi-list">'+a.map(x=>'<a href="'+maps(x[2])+'" target="_blank" rel="noopener"><span>'+x[0]+'</span><b>'+esc(x[1])+'</b><small>פתח במפות Google</small></a>').join('')+'</div></section>'}
-function enhance(){const p=$('#inlinePanel');if(!p||!p.classList.contains('show'))return;const day=document.querySelector('.day-tile.active')?.dataset.day||window.__currentTripDay;if(!day)return;if(!p.querySelector('.trip-alerts-added')){const wrap=document.createElement('div');wrap.className='trip-alerts-added';wrap.innerHTML=taskCard(day)+poiCard(day);const flex=[...p.querySelectorAll('.info-card')].find(x=>x.textContent.includes('זמן חופשי'));if(flex)p.insertBefore(wrap,flex);else p.appendChild(wrap)}}
+function enhance(){const p=$('#inlinePanel');if(!p||!p.classList.contains('show'))return;const day=document.querySelector('.day-tile.active')?.dataset.day||window.__currentTripDay;if(!day)return;if(!p.querySelector('.trip-alerts-added')){const wrap=document.createElement('div');wrap.className='trip-alerts-added';wrap.innerHTML=taskCard(day)+poiCard(day);const flex=[...p.querySelectorAll('.info-card')].find(x=>x.textContent.includes('זמן חופשי'));if(flex)p.insertBefore(wrap,flex);else p.appendChild(wrap)}p.onclick=handleTaskAction}
 const old=window.openDay;if(typeof old==='function'){window.openDay=function(id){window.__currentTripDay=id;document.querySelectorAll('.day-tile').forEach(x=>x.classList.toggle('active',x.dataset.day===id));old(id);setTimeout(enhance,0)};document.querySelectorAll('.day-tile[data-day]').forEach(b=>b.onclick=()=>window.openDay(b.dataset.day))}
-window.openAlerts=function(){const p=$('#inlinePanel'),open=tasks.filter(x=>x.status==='open'),done=tasks.filter(x=>x.status==='done');p.innerHTML='<div class="inline-head"><div><small>'+done.length+' סגורות · '+open.length+' פתוחות</small><h2>📋 מרכז משימות</h2></div><button id="closeAlerts" class="close-red" type="button">סגור</button></div><section class="info-card"><h3>🔴 משימות פתוחות</h3>'+open.map(x=>'<div class="trip-alert"><b>'+esc(x.date)+' · '+esc(x.title)+'</b><small>'+esc(x.place)+'</small><p>'+esc(x.detail)+'</p></div>').join('')+'</section><section class="info-card"><h3>🟢 סגור ומאושר</h3>'+done.map(x=>'<div class="trip-alert"><b>'+esc(x.date)+' · '+esc(x.title)+'</b><small>'+esc(x.place)+'</small><p>'+esc(x.detail)+'</p></div>').join('')+'</section>';p.classList.add('show');$('#closeAlerts').onclick=()=>{p.classList.remove('show');p.innerHTML=''};p.scrollIntoView({behavior:'smooth',block:'start'})}
+function handleTaskAction(event){
+ const button=event.target.closest('[data-task-id]');if(!button)return;
+ const task=defaultTasks.find(item=>item.id===button.dataset.taskId);if(!task)return;
+ if(button.classList.contains('task-done')){
+  if(!confirm('האם לאשר שהמשימה בוצעה ולהעביר אותה לרשימת „בוצעו”?'))return;
+  taskState[task.id]={...(taskState[task.id]||{}),status:'done'};saveTaskState();window.openAlerts();
+ }
+ if(button.classList.contains('task-delete')){
+  if(!confirm('למחוק את המשימה „'+task.title+'”?'))return;
+  taskState[task.id]={...(taskState[task.id]||{}),deleted:true};saveTaskState();window.openAlerts();
+ }
+}
+window.openAlerts=function(){const p=$('#inlinePanel'),all=tasks(),open=all.filter(x=>x.status==='open'),done=all.filter(x=>x.status==='done');p.innerHTML='<div class="inline-head"><div><small>'+done.length+' בוצעו · '+open.length+' פתוחות</small><h2>📋 מרכז משימות</h2></div><button id="closeAlerts" class="close-red" type="button">סגור</button></div><section class="info-card"><h3>🔴 משימות פתוחות</h3>'+(open.length?open.map(x=>taskMarkup(x,true)).join(''):'<p class="tasks-empty">אין משימות פתוחות.</p>')+'</section><section class="info-card"><h3>🟢 בוצעו</h3>'+(done.length?done.map(x=>taskMarkup(x,true)).join(''):'<p class="tasks-empty">עדיין אין משימות שבוצעו.</p>')+'</section>';p.classList.add('show');p.onclick=handleTaskAction;$('#closeAlerts').onclick=()=>{p.classList.remove('show');p.innerHTML=''};p.scrollIntoView({behavior:'smooth',block:'start'})}
 })();
