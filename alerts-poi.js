@@ -41,11 +41,12 @@ const poi={'26.09':[['🎉','פול מון פארטי','Haad Rin Nok Koh Phangan
 function maps(q){return 'https://www.google.com/maps/search/?api=1&query='+encodeURIComponent(q)}
 function taskActions(task){return '<div class="task-actions">'+(task.status==='open'?'<button class="task-done" data-task-id="'+task.id+'" type="button">✓ בוצע</button>':'')+'<button class="task-edit" data-task-id="'+task.id+'" type="button">✏️ עריכה</button><button class="task-delete" data-task-id="'+task.id+'" type="button">🗑️ מחיקה</button></div>'}
 function taskMarkup(task,showDate=false){return '<div class="trip-alert" data-task-card="'+task.id+'"><b>'+(task.status==='done'?'🟢 ':'🔴 ')+(showDate?esc(task.date)+' · ':'')+esc(task.title)+'</b><small>'+esc(task.place)+'</small><p>'+esc(task.detail)+'</p>'+taskActions(task)+'</div>'}
-function taskCard(day){const a=tasks().filter(x=>x.date===day);if(!a.length)return '<section class="info-card"><h3>📋 משימות</h3><p>🟢 אין כרגע משימה ליום הזה.</p></section>';return '<section class="info-card"><h3>📋 משימות</h3>'+a.map(x=>taskMarkup(x)).join('')+'</section>'}
+function taskCard(day){const a=tasks().filter(x=>x.date===day);return '<section class="info-card"><div class="section-title-row"><h3>📋 משימות</h3><button class="add-btn" data-add-task-day="'+esc(day)+'" type="button">+ הוספה</button></div>'+(a.length?a.map(x=>taskMarkup(x)).join(''):'<p>🟢 אין כרגע משימה ליום הזה.</p>')+'</section>'}
 function poiCard(day){const a=poi[day]||[];if(!a.length)return '';return '<section class="info-card"><h3>📍 נקודות עניין קרובות</h3><div class="poi-list">'+a.map(x=>'<a href="'+maps(x[2])+'" target="_blank" rel="noopener"><span>'+x[0]+'</span><b>'+esc(x[1])+'</b><small>פתח במפות Google</small></a>').join('')+'</div></section>'}
 function enhance(){const p=$('#inlinePanel');if(!p||!p.classList.contains('show'))return;const day=document.querySelector('.day-tile.active')?.dataset.day||window.__currentTripDay;if(!day)return;if(!p.querySelector('.trip-alerts-added')){const wrap=document.createElement('div');wrap.className='trip-alerts-added';wrap.innerHTML=taskCard(day)+poiCard(day);const flex=[...p.querySelectorAll('.info-card')].find(x=>x.textContent.includes('זמן חופשי'));if(flex)p.insertBefore(wrap,flex);else p.appendChild(wrap)}p.onclick=handleTaskAction}
 const old=window.openDay;if(typeof old==='function'){window.openDay=function(id){window.__currentTripDay=id;document.querySelectorAll('.day-tile').forEach(x=>x.classList.toggle('active',x.dataset.day===id));old(id);setTimeout(enhance,0)};document.querySelectorAll('.day-tile[data-day]').forEach(b=>b.onclick=()=>window.openDay(b.dataset.day))}
 function handleTaskAction(event){
+ const addButton=event.target.closest('[data-add-task-day]');if(addButton){addTask(addButton.dataset.addTaskDay);return;}
  const button=event.target.closest('[data-task-id]');if(!button)return;
  const task=tasks().find(item=>item.id===button.dataset.taskId);if(!task)return;
  if(button.classList.contains('task-done')){
@@ -64,12 +65,12 @@ function handleTaskAction(event){
   taskState[task.id]={...(taskState[task.id]||{}),title:title.trim(),date:date.trim()||'ללא תאריך',place:place.trim(),detail:detail.trim()};saveTaskState();window.openAlerts();
  }
 }
-function addTask(){
+function addTask(defaultDate='ללא תאריך'){
  const title=prompt('שם המשימה החדשה');if(title===null||!title.trim())return;
- const date=prompt('תאריך או מועד','ללא תאריך');if(date===null)return;
+ const date=prompt('תאריך או מועד',defaultDate);if(date===null)return;
  const place=prompt('מקום','');if(place===null)return;
  const detail=prompt('פרטים','');if(detail===null)return;
  customTasks.push({id:'custom-task-'+Date.now(),title:title.trim(),date:date.trim()||'ללא תאריך',place:place.trim(),detail:detail.trim(),status:'open'});saveCustomTasks();window.openAlerts();
 }
-window.openAlerts=function(){const p=$('#inlinePanel'),all=tasks(),open=all.filter(x=>x.status==='open'),done=all.filter(x=>x.status==='done');p.innerHTML='<div class="inline-head"><div><small>'+done.length+' בוצעו · '+open.length+' פתוחות</small><h2>📋 מרכז משימות</h2></div><div class="task-head-actions"><button id="addTaskBtn" class="add-btn" type="button">+ הוסף משימה</button><button id="closeAlerts" class="close-red" type="button">סגור</button></div></div><section class="info-card"><h3>🔴 משימות פתוחות</h3>'+(open.length?open.map(x=>taskMarkup(x,true)).join(''):'<p class="tasks-empty">אין משימות פתוחות.</p>')+'</section><section class="info-card"><h3>🟢 בוצעו</h3>'+(done.length?done.map(x=>taskMarkup(x,true)).join(''):'<p class="tasks-empty">עדיין אין משימות שבוצעו.</p>')+'</section>';p.classList.add('show');p.onclick=handleTaskAction;$('#addTaskBtn').onclick=addTask;$('#closeAlerts').onclick=()=>{p.classList.remove('show');p.innerHTML=''};p.scrollIntoView({behavior:'smooth',block:'start'})}
+window.openAlerts=function(){const p=$('#inlinePanel'),all=tasks(),open=all.filter(x=>x.status==='open'),done=all.filter(x=>x.status==='done');p.innerHTML='<div class="inline-head"><div><small>'+done.length+' בוצעו · '+open.length+' פתוחות</small><h2>📋 מרכז משימות</h2></div><button id="closeAlerts" class="close-red" type="button">סגור</button></div><section class="info-card task-create-card"><button id="addTaskBtn" class="add-btn" type="button">+ הוסף משימה חדשה</button></section><section class="info-card"><h3>🔴 משימות פתוחות</h3>'+(open.length?open.map(x=>taskMarkup(x,true)).join(''):'<p class="tasks-empty">אין משימות פתוחות.</p>')+'</section><section class="info-card"><h3>🟢 בוצעו</h3>'+(done.length?done.map(x=>taskMarkup(x,true)).join(''):'<p class="tasks-empty">עדיין אין משימות שבוצעו.</p>')+'</section>';p.classList.add('show');p.onclick=handleTaskAction;$('#addTaskBtn').onclick=()=>addTask();$('#closeAlerts').onclick=()=>{p.classList.remove('show');p.innerHTML=''};p.scrollIntoView({behavior:'smooth',block:'start'})}
 })();
