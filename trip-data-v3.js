@@ -27,3 +27,48 @@ days:[
 {id:'09.10',date:'9.10',title:'חזרה לישראל',icon:'https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/1f6ec.svg',stay:'חזרה הביתה ב-11:10',folder:'https://drive.google.com/drive/folders/1JWLTiiztI-HweXJnZ1pMjF008naDO-oi',segments:[{from:'בנגקוק (Bangkok)',to:'אבו דאבי (Abu Dhabi)',depart:'03:15',arrive:'06:45',duration:'כ-6:30 שעות טיסה',mode:'Etihad',luggage:'נמסרת בבנגקוק; לוודא תג עד תל אביב'},{from:'אבו דאבי (Abu Dhabi)',to:'תל אביב (Tel Aviv)',depart:'08:45',arrive:'11:10',duration:'כ-3:25 שעות טיסה',mode:'Etihad',luggage:'איסוף בנתב״ג',nav:[['נווט לנתב״ג','https://www.google.com/maps/search/?api=1&query=Ben+Gurion+Airport']]}],docs:[['כרטיס Etihad','https://drive.google.com/file/d/11IJHK64yk6xT4V3lpXW52B60y3ndUIP9/view']],links:[['Etihad','https://www.etihad.com/']],flex:'לא לתכנן כלום ליום החזרה.'}
 ]
 };
+
+// Practical clothing notes for each stage of the trip.
+const clothingByDay={
+'prep':{day:'בגדים קלים ונושמים לרוב הטיול.',bag:'שכבה דקה ומתקפלת, מטרייה קטנה ונעליים נוחות.',note:'אין צורך בג׳קט כבד. מזגנים בטיסות, בקניונים ובאוטובוסים יכולים להיות חזקים.'},
+'25.09':{day:'מכנס נוח, חולצה קצרה ונעליים סגורות ונוחות.',bag:'סווטשירט או ג׳קט דק לטיסה וגרביים.',note:'להימנע מבגדים מסורבלים במעבר בין הטיסות.'},
+'26.09':{day:'מכנס קצר, חולצה נושמת וסנדלים או נעליים שלא מחליקות.',bag:'בגד ים, חולצה להחלפה, שכבה דקה ומעיל גשם מתקפל.',note:'למסיבת Full Moon לקחת נעליים סגורות, לא כפכפים, ותיק קטן צמוד.'},
+'27.09':{day:'לבוש קל ונוח ליום התאוששות ולמעבורת.',bag:'מעיל גשם דק ושכבה למזגן.',note:'במעבורת עדיף נעליים עם אחיזה.'},
+'28.09':{day:'מכנס קל, חולצה קצרה ונעליים נוחות.',bag:'שכבה דקה לטיסה ולערב בצ׳יאנג מאי.',note:'בערב עשוי להיות נעים יותר מבאיים.'},
+'29.09':{day:'מכנס ארוך קל או מכנס טיולים, חולצה נושמת ונעליים סגורות.',bag:'דוחה יתושים, כובע, מעיל גשם דק וחולצה להחלפה.',note:'בפעילות עם פילים לא להגיע עם כפכפים או בגדים עדינים.'},
+'30.09':{day:'מכנס ספורט או טיולים ונעליים סגורות עם אחיזה.',bag:'שכבה דקה, כובע, מים ומעיל גשם.',note:'לאומגה להימנע מכיסים פתוחים ואביזרים רופפים.'},
+'01.10':{day:'לבוש נסיעה נוח ונעליים סגורות.',bag:'סווטשירט או ג׳קט דק למיניוואן ולטיסה.',note:'המזגן בוואנים ובטיסות עלול להיות קר.'},
+'02.10':{day:'קז׳ואל קל ונעליים נוחות להליכה.',bag:'מטרייה קטנה ושכבה דקה לקניונים.',note:'לבנגקוק אין צורך בג׳קט חם.'},
+'03-08.10':{day:'חולצה קצרה, מכנס קל ונעלי הליכה. ביום מקדשים מכנס ארוך וכתפיים מכוסות.',bag:'שכבה דקה לקניונים, מטרייה קטנה, כובע ובקבוק מים.',note:'במקדשים לא להסתמך על צעיף בלבד. להימנע מגופייה, מכנס קצר ובגד קרוע.'},
+'09.10':{day:'בגדי טיסה נוחים ונעליים סגורות.',bag:'סווטשירט או ג׳קט דק וגרביים.',note:'להשאיר בגדי החלפה נגישים בתיק היד.'}
+};
+window.TRIP_V3.days.forEach(d=>{if(clothingByDay[d.id])d.clothing=clothingByDay[d.id];});
+
+const bangkokOpen=window.TRIP_V3.days.find(d=>d.id==='03-08.10');
+if(bangkokOpen){
+bangkokOpen.title='בנגקוק ואפשרויות';
+bangkokOpen.optionalRoutes=[
+{icon:'🛕',title:'המקדשים והנהר',when:'יום מלא · להתחיל 08:30',note:'לבוש שמכסה כתפיים וברכיים. Grab בבוקר ושיט בהמשך.',stops:['הארמון הגדול ומקדש בודהה האזמרגד','Wat Pho והבודהה השוכב','ארוחה במסעדה מסודרת באזור Tha Tien','מעבורת קצרה ל-Wat Arun','שיט ל-ICONSIAM וארוחת ערב'],links:[['מסלול מלא במפות','https://www.google.com/maps/dir/?api=1&origin=Pullman+Bangkok+Hotel+G&destination=ICONSIAM&waypoints=Grand+Palace+Bangkok%7CWat+Pho%7CWat+Arun'],['האתר הרשמי של הארמון','https://www.royalgrandpalace.th/en/home']]},
+{icon:'🛍️',title:'Chatuchak ו-Or Tor Kor',when:'מומלץ בשבת 3.10 או ראשון 4.10',note:'שני שווקים סמוכים. נהנים מהשוק בלי להסתמך על אוכל רחוב.',stops:['Chatuchak Weekend Market בבוקר','מעבר ל-Or Tor Kor Market','ארוחה במסעדה מסודרת או בקניון','חזרה למלון לפני העומס'],links:[['Chatuchak','https://www.google.com/maps/search/?api=1&query=Chatuchak+Weekend+Market'],['Or Tor Kor','https://www.google.com/maps/search/?api=1&query=Or+Tor+Kor+Market']]},
+{icon:'🌸',title:'שוק הפרחים וצ׳יינה טאון',when:'אחר הצהריים וערב',note:'מסלול צילום ואווירה. אוכלים במסעדה נבחרת ולא בדוכן.',stops:['Pak Khlong Talat','Talat Noi','River City Bangkok','מסעדה מסודרת בצ׳יינה טאון'],links:[['שוק הפרחים','https://www.google.com/maps/search/?api=1&query=Pak+Khlong+Talat'],['Talat Noi','https://www.google.com/maps/search/?api=1&query=Talat+Noi+Bangkok']]},
+{icon:'🌳',title:'בנגקוק הירוקה',when:'בוקר מוקדם או אחרי 16:00',note:'מסלול חינמי ורגוע ליום קל.',stops:['Lumphini Park','Green Mile','Benjakitti Forest Park','ארוחה מסודרת באזור Asok'],links:[['מסלול בין הפארקים','https://www.google.com/maps/dir/?api=1&origin=Lumphini+Park&destination=Benjakitti+Forest+Park&travelmode=walking']]},
+{icon:'💦',title:'מפלי Erawan וקנצ׳נבורי',when:'יום מלא מחוץ לבנגקוק · יציאה מוקדמת',note:'שבעה מפלסים ואזורי רחצה. לא משלבים עם יום המקדשים בבנגקוק בגלל המרחק. לבדוק מזג אוויר ופתיחת שבילים יום קודם.',stops:['יציאה מבנגקוק סביב 06:30','Erawan National Park ומסלול המפלים','רחצה רק באזור פתוח ומאושר','ארוחה מסודרת','גשר נהר קוואי אם נשאר זמן','חזרה לבנגקוק בערב'],links:[['Erawan National Park','https://www.google.com/maps/search/?api=1&query=Erawan+National+Park'],['המידע הרשמי','https://www.tourismthailand.org/Attraction/erawan-national-park']]},
+{icon:'👟',title:'יום שופינג: נעלי ספורט ובגדים',when:'מומלץ לקראת סוף השהייה בבנגקוק',note:'להגיע עם תיק הוואקום כמעט ריק. למדוד נעליים בסוף היום ולשמור קבלות.',stops:['Siam Center ו-Siam Discovery','Siam Paragon למותגים ונעלי ספורט','CentralWorld להשוואת מחירים ובגדים','MBK לפריטים זולים יותר','אריזה בתיק הוואקום במלון'],links:[['מסלול קניונים','https://www.google.com/maps/dir/?api=1&origin=Siam+Discovery&destination=MBK+Center&waypoints=Siam+Paragon%7CCentralWorld'],['חיפוש נעלי ספורט','https://www.google.com/maps/search/?api=1&query=running+shoes+Siam+Bangkok']]},
+{icon:'⌚',title:'רכישת Garmin Descent Mk3i',when:'אופציונלי · רק אחרי אישור מלאי ו-VAT',note:'ProDive עדיף אם חזר למלאי; Aquapro חלופה פעילה. אפשר לקנות שעון בלבד ולהוסיף משדר T2 בהמשך.',stops:['לוודא מלאי Mk3i 51mm ומחיר כולל VAT','לוודא השתתפות ב-VAT Refund for Tourists','להגיע עם דרכון ולבקש P.P.10 וחשבונית מקורית','לבדוק ולאקטב את השעון בחנות','לשמור שעון, אריזה ומסמכים בתיק היד','להציג במכס בשדה לפני מסירת הכבודה'],links:[['ProDive Bangkok','https://www.google.com/maps/search/?api=1&query=ProDive+Maneeya+Center+Bangkok'],['Aquapro Bangkok','https://www.google.com/maps/search/?api=1&query=Aquapro+Bangkok'],['VAT Refund Thailand','https://vrtweb.rd.go.th/']]}
+];
+bangkokOpen.food=[
+{name:'Laem Charoen Seafood',area:'סניפים בקניונים מרכזיים',fit:'דגים ופירות ים מבושלים, ירקות ואכילה במסעדה מסודרת.',maps:'https://www.google.com/maps/search/?api=1&query=Laem+Charoen+Seafood+Bangkok'},
+{name:'Somboon Seafood',area:'מספר סניפים בבנגקוק',fit:'מסעדת פירות ים ותיקה. לבחור דג מאודה או צלוי וירקות.',maps:'https://www.google.com/maps/search/?api=1&query=Somboon+Seafood+Bangkok'},
+{name:'Kub Kao Kub Pla',area:'ICONSIAM וקניונים מרכזיים',fit:'מנות תאילנדיות מסודרות עם דגים, סלטים וירקות.',maps:'https://www.google.com/maps/search/?api=1&query=Kub+Kao+Kub+Pla+Bangkok'},
+{name:'Broccoli Revolution',area:'Sukhumvit',fit:'מסעדה צמחונית וטבעונית ליום ללא דגים ובשר.',maps:'https://www.google.com/maps/search/?api=1&query=Broccoli+Revolution+Bangkok'},
+{name:'מסעדת חב״ד בנגקוק',area:'Phra Athit',fit:'אפשרות כשרה. לבדוק במקום סוג מטבח ושעות פעילות.',maps:'https://www.google.com/maps/search/?api=1&query=Chabad+Bangkok+Kosher+Restaurant'}
+];
+bangkokOpen.links=[['סופרמרקט קרוב אליי','https://www.google.com/maps/search/?api=1&query=supermarket+near+me'],['Gourmet Market באזור Silom','https://www.google.com/maps/search/?api=1&query=Gourmet+Market+Silom+Bangkok'],['מסעדות דגים קרובות','https://www.google.com/maps/search/?api=1&query=seafood+restaurant+near+me']];
+bangkokOpen.flex='המסלולים הם אפשרויות ולא התחייבות. לבחור בכל בוקר לפי מזג האוויר, הכוח ומיקום המלון.';
+}
+
+const paiWater=window.TRIP_V3.days.find(d=>d.id==='30.09');
+if(paiWater){paiWater.optionalRoutes=[
+{icon:'💧',title:'מפל ומקדש בפאי',when:'חלופה לאומגה או המשך רק אם השעות מאפשרות',note:'השילוב הטבעי ביותר במסלול. להשתמש בנהג פרטי או טיול מאורגן, לא לצאת עצמאית על קטנוע ללא ניסיון.',stops:['Pam Bok Waterfall בבוקר','Bamboo Bridge או Land Split לפי מצב הדרך','חזרה למנוחה בפאי','Wat Phra That Mae Yen לקראת שקיעה','שוק הלילה של פאי'],links:[['Pam Bok Waterfall','https://www.google.com/maps/search/?api=1&query=Pam+Bok+Waterfall+Pai'],['Wat Phra That Mae Yen','https://www.google.com/maps/search/?api=1&query=Wat+Phra+That+Mae+Yen+Pai']]},
+{icon:'♨️',title:'מעיין חם ויום מים רגוע',when:'חלופה רגועה ביום גשום קל',note:'לבדוק באותו בוקר מצב דרך ופתיחה. אחרי גשם חזק לא נכנסים למפל.',stops:['Sai Ngam Hot Spring או Tha Pai Hot Spring','ארוחה מסודרת בפאי','מנוחה או מסאז׳','שוק הלילה בערב'],links:[['Sai Ngam Hot Spring','https://www.google.com/maps/search/?api=1&query=Sai+Ngam+Hot+Spring+Pai'],['Tha Pai Hot Spring','https://www.google.com/maps/search/?api=1&query=Tha+Pai+Hot+Spring']]}
+];}
