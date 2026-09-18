@@ -3,7 +3,8 @@ const base='https://cdn.jsdelivr.net/gh/twitter/twemoji@latest/assets/svg/';
 const icons={
  prep:['1f9f3','mint'],'25.09':['2708','sky'],'26.09':['1f3dd','aqua'],'27.09':['26f4','blue'],
  '28.09':['1f6d5','gold'],'29.09':['1f418','orange'],'30.09':['1f9d7','leaf'],'01.10':['1f690','violet'],
- '02.10':['1f3d9','rose'],'03-08.10':['1f9ed','teal'],'09.10':['1f6ec','navy'],general:['1f9f0','green']
+ '02.10':['1f3d9','rose'],'03.10':['1f6cd','teal'],'04.10':['1f4a6','aqua'],'05.10':['1f33f','leaf'],
+ '06.10':['1f6cd','gold'],'07.10':['1f9d8','violet'],'08.10':['1f9f3','mint'],'09.10':['1f6ec','navy'],general:['1f9f0','green']
 };
 function iconHtml(code){return `<img class="color-tile-icon" src="${base}${code}.svg" alt="" loading="lazy">`}
 function apply(){
