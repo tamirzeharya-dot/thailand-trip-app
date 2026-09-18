@@ -88,3 +88,34 @@ if(paiWater){paiWater.optionalRoutes=[
 {icon:'💧',title:'מפל ומקדש בפאי',when:'חלופה לאומגה או המשך רק אם השעות מאפשרות',note:'השילוב הטבעי ביותר במסלול. להשתמש בנהג פרטי או טיול מאורגן, לא לצאת עצמאית על קטנוע ללא ניסיון.',stops:['Pam Bok Waterfall בבוקר','Bamboo Bridge או Land Split לפי מצב הדרך','חזרה למנוחה בפאי','Wat Phra That Mae Yen לקראת שקיעה','שוק הלילה של פאי'],links:[['Pam Bok Waterfall','https://www.google.com/maps/search/?api=1&query=Pam+Bok+Waterfall+Pai'],['Wat Phra That Mae Yen','https://www.google.com/maps/search/?api=1&query=Wat+Phra+That+Mae+Yen+Pai']]},
 {icon:'♨️',title:'מעיין חם ויום מים רגוע',when:'חלופה רגועה ביום גשום קל',note:'לבדוק באותו בוקר מצב דרך ופתיחה. אחרי גשם חזק לא נכנסים למפל.',stops:['Sai Ngam Hot Spring או Tha Pai Hot Spring','ארוחה מסודרת בפאי','מנוחה או מסאז׳','שוק הלילה בערב'],links:[['Sai Ngam Hot Spring','https://www.google.com/maps/search/?api=1&query=Sai+Ngam+Hot+Spring+Pai'],['Tha Pai Hot Spring','https://www.google.com/maps/search/?api=1&query=Tha+Pai+Hot+Spring']]}
 ];}
+
+// Short decision briefs for paid attractions and places with relevant opening hours.
+const attractionBriefsByDay={
+'29.09':[
+ {name:'Elephant Nature Park',paid:true,cost:'ההזמנה כבר קיימת. לבדוק בשובר שהיתרה שולמה במלואה.',hours:'איסוף 07:30–08:00, חזרה משוערת סביב 14:30, שעון תאילנד.',booking:'סגור מראש. להציג את האישור ולחכות בלובי מ־07:20.',note:'אין צורך לקנות כרטיס נוסף ביום הפעילות.',links:[['האישור שלי','https://docs.google.com/document/d/17e6Xv7_dvwUs2FtPIA3jj2lC9f8aWWS5NLa77SfUwDg/edit'],['האתר הרשמי','https://elephantnaturepark.org/visit-volunteer/half-day-morning-visit-to-elephant-nature-park/']]}
+],
+'30.09':[
+ {name:'Pai Zipline',paid:true,cost:'מחיר לפי החבילה שנבחרה. לבדוק באישור לפני היציאה אם נותר תשלום.',hours:'שעת הפעילות והאיסוף עדיין דורשות אישור מהמפעיל.',booking:'נדרש לתאם מראש איסוף, שעת התחלה ודרך חזרה.',note:'לא לצאת לפני שמתקבל אישור כתוב של השעה והאיסוף.',links:[['מחיר וחבילת Package A','https://paizipline.com/product/package-a/']]},
+ {name:'Pam Bok Waterfall, חלופה',paid:true,cost:'דווח מחיר של כ־200 באט. אין מחיר רשמי יציב ולכן לאמת בכניסה.',hours:'להגיע באור יום בלבד ולבדוק מצב דרך וזרימה באותו בוקר.',booking:'בדרך כלל משלמים בכניסה, ללא הזמנה מראש.',note:'אחרי גשם חזק לא נכנסים למים או לקניון הצר.',links:[['מידע רשמי לתיירים בתאילנד','https://thai.tourismthailand.org/Home']]},
+ {name:'Tha Pai Hot Spring, חלופה',paid:true,cost:'כ־300 באט למבוגר זר. לאמת לפני היציאה.',hours:'08:00–18:00 לפי רשות התיירות של תאילנד.',booking:'אין צורך רגיל בהזמנה מראש; תשלום בכניסה.',note:'המים ליד המקור חמים מאוד. נכנסים רק לבריכות הרחצה המסומנות.',links:[['מידע רשות התיירות','https://www.tourismthailand.org/Attraction/tha-pai-hot-spring']]}
+],
+'02.10':[
+ {name:'הארמון הגדול ו־Wat Phra Kaew',paid:true,cost:'500 באט למבקר זר.',hours:'08:30–16:30; מכירת כרטיסים עד 15:30.',booking:'אפשר לקנות בכניסה או באתר הרשמי. עדיף להגיע ב־08:30.',note:'חובה כתפיים וברכיים מכוסות. אין רחפן.',links:[['כרטיסים ומידע רשמי','https://www.royalgrandpalace.th/en/buy-ticket']]},
+ {name:'Wat Pho',paid:true,cost:'300 באט למבקר זר.',hours:'08:00–19:30.',booking:'אין צורך רגיל להזמין מראש; משלמים בכניסה.',note:'לבוש מכבד. חולצים נעליים לפני כניסה למבנים הדתיים.',links:[['מידע רשמי Wat Pho','https://www.watpho.com/en/contact/plan']]},
+ {name:'Wat Arun',paid:true,cost:'כ־200 באט למבקר זר. לאמת באתר או בקופה ביום הביקור.',hours:'בקירוב 08:00–18:00.',booking:'אין צורך רגיל להזמין מראש; תשלום בכניסה.',note:'נדרש גם תשלום קטן ונפרד למעבורת החוצה את הנהר.',links:[['מידע רשמי לתיירים בתאילנד','https://thai.tourismthailand.org/Home']]}
+],
+'03.10':[
+ {name:'Chatuchak Weekend Market',paid:false,cost:'הכניסה חינם; משלמים רק על קניות ואוכל.',hours:'בשבת רוב השוק פעיל בקירוב 09:00–18:00.',booking:'אין צורך בכרטיס או בהזמנה.',note:'להגיע בבוקר. לקחת מזומן קטן, מים ותיק סגור.',links:[['מידע רשות התיירות','https://thai.tourismthailand.org/Home']]},
+ {name:'Or Tor Kor Market',paid:false,cost:'הכניסה חינם.',hours:'בקירוב 06:00–20:00 מדי יום.',booking:'אין צורך בכרטיס.',note:'לאוכל לבחור מסעדה מסודרת או דוכן עם תחלופה גבוהה ובישול מולך.',links:[['מידע רשות התיירות','https://thai.tourismthailand.org/Home']]}
+],
+'04.10':[
+ {name:'Erawan National Park ומפלי ארוואן',paid:true,cost:'300 באט למבוגר זר. ייתכנו תשלומים נוספים לרכב או שירותים.',hours:'בקירוב 08:00–16:30; שבילים ומפלסים עליונים עשויים להיסגר מוקדם יותר.',booking:'למבקר עצמאי משלמים בדרך כלל בכניסה. הסעה או טיול מאורגן מזמינים מראש.',note:'לבדוק ערב קודם מזג אוויר, פתיחת שבילים והאם המחיר השתנה. לצאת מבנגקוק סביב 06:30.',links:[['מידע רשות התיירות על Erawan','https://www.tourismthailand.org/Attraction/erawan-national-park']]}
+],
+'05.10':[
+ {name:'Lumphini ו־Benjakitti Parks',paid:false,cost:'הכניסה לפארקים חינם.',hours:'שעות הפארקים משתנות; לתכנן את הביקור בשעות האור בבוקר.',booking:'אין צורך בכרטיס.',note:'אם יורד גשם חזק, לדחות את מסלול ההליכה.',links:[['מידע רשות התיירות','https://thai.tourismthailand.org/Home']]},
+ {name:'Pak Khlong Talat ושכונת Talat Noi',paid:false,cost:'הכניסה חינם; תקציב רק לאוכל, קניות ותחבורה.',hours:'שוק הפרחים פעיל גם בלילה, אך למסלול נוח להגיע אחר הצהריים או בערב.',booking:'אין צורך בכרטיס.',note:'מקומות ציבוריים וגמישים, לכן אפשר לשנות את השעה לפי מזג האוויר.',links:[['מידע רשות התיירות','https://thai.tourismthailand.org/Home']]}
+],
+'06.10':[
+ {name:'Siam, CentralWorld ו־MBK',paid:false,cost:'אין דמי כניסה; התקציב הוא לקניות בלבד.',hours:'רוב הקניונים פתוחים בקירוב 10:00–22:00.',booking:'אין צורך בכרטיס.',note:'לרכישת Garmin לקחת דרכון ולבקש חשבונית וטופס VAT Refund מתאים.',links:[['מידע רשות התיירות','https://thai.tourismthailand.org/Home'],['VAT Refund Thailand','https://vrtweb.rd.go.th/']]}
+]};
+Object.entries(attractionBriefsByDay).forEach(([id,items])=>{const day=window.TRIP_V3.days.find(d=>d.id===id);if(day)day.attractionBriefs=items;});
