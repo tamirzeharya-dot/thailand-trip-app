@@ -32,3 +32,6 @@
 /* Final title-to-status spacing: about two mobile text lines */
 .journey-status{margin-top:38px}
 @media(max-width:600px){.journey-status{margin-top:36px}.hero{min-height:168px}}
+
+/* Optional routes, shopping and safer food choices */
+.option-note{margin:0 0 9px;color:var(--muted);font-size:12px}.option-list,.food-list{display:grid;gap:9px}.option-card,.food-card{border:1px solid #d9e9e3;background:#f7fcfa;border-radius:13px;padding:10px}.option-head{display:flex;gap:9px;align-items:center}.option-head>span{font-size:25px}.option-head b,.food-card b{display:block;font-size:14px}.option-head small,.food-card small{display:block;color:var(--muted);font-size:10px;margin-top:2px}.option-card p,.food-card p{margin:7px 0;font-size:12px;line-height:1.45}.option-card ol{margin:7px 18px 7px 0;padding:0;font-size:12px}.option-card li{margin:4px 0}.food-list{grid-template-columns:repeat(2,minmax(0,1fr))}@media(max-width:600px){.food-list{grid-template-columns:1fr}.option-card,.food-card{padding:9px}}
