@@ -8,7 +8,8 @@ let coords=null;
 function renderList(){
  const list=$('#savedPlacesList'),items=read();
  if(!list)return;
- list.innerHTML=items.length?items.map((p,i)=>`<article class="saved-place"><div><b>📍 ${esc(p.name)}</b><small>${esc(p.date)}</small><p>${esc(p.note||'ללא הערה')}</p></div><div class="saved-actions"><a href="https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}" target="_blank" rel="noopener">מפות</a><button data-delete="${i}" type="button">מחק</button></div></article>`).join(''):'<p class="empty-places">עדיין לא שמרת מקומות. אפשר לשמור מסעדה, חוף, מלון או מקום שהגעת אליו במקרה.</p>';
+ list.innerHTML=items.length?items.map((p,i)=>`<article class="saved-place"><div><b>📍 ${esc(p.name)}</b><small>${esc(p.date)}</small><p>${esc(p.note||'ללא הערה')}</p></div><div class="saved-actions"><a href="https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}" target="_blank" rel="noopener">מפות</a><button data-edit="${i}" type="button">עריכה</button><button data-delete="${i}" type="button">מחק</button></div></article>`).join(''):'<p class="empty-places">עדיין לא שמרת מקומות. אפשר לשמור מסעדה, חוף, מלון או מקום שהגעת אליו במקרה.</p>';
+ list.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{const a=read(),p=a[+b.dataset.edit];if(!p)return;const name=prompt('שם המקום',p.name||'');if(name===null||!name.trim())return;const note=prompt('הערה',p.note||'');if(note===null)return;p.name=name.trim();p.note=note.trim();write(a);renderList()});
  list.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{const a=read();a.splice(+b.dataset.delete,1);write(a);renderList()});
 }
 function locate(){
