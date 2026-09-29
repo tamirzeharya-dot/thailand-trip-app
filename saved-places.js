@@ -1,14 +1,23 @@
 (()=>{
 const KEY='thailand_saved_places_v1';
+const SEED_KEY='thailand_saved_places_seed_20260929_markets';
+const MARKET_PLACE={id:'chiang-mai-markets-20260929',name:'תחילת אזור השווקים ליד גשר Nawarat',note:'הקצה המערבי של גשר Nawarat, ליד Wichayanon Road ונהר פינג. מכאן מתחיל אזור עמוס חנויות ושווקים, ובהמשך נמצאים Warorot Market ו-Ton Lam Yai Market.',query:'Nawarat Bridge west end Wichayanon Road Chiang Mai',date:'29.9.2026'};
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??'').replace(/[&<>"']/g,m=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[m]));
 const read=()=>{try{return JSON.parse(localStorage.getItem(KEY)||'[]')}catch{return[]}};
 const write=a=>localStorage.setItem(KEY,JSON.stringify(a));
+function seedVisitedMarket(){
+ if(localStorage.getItem(SEED_KEY))return;
+ const items=read();
+ if(!items.some(p=>p.id===MARKET_PLACE.id))items.unshift(MARKET_PLACE);
+ write(items);localStorage.setItem(SEED_KEY,'1');
+}
 let coords=null;
 function renderList(){
+ seedVisitedMarket();
  const list=$('#savedPlacesList'),items=read();
  if(!list)return;
- list.innerHTML=items.length?items.map((p,i)=>`<article class="saved-place"><div><b>📍 ${esc(p.name)}</b><small>${esc(p.date)}</small><p>${esc(p.note||'ללא הערה')}</p></div><div class="saved-actions"><a href="https://www.google.com/maps/search/?api=1&query=${p.lat},${p.lng}" target="_blank" rel="noopener">מפות</a><button data-edit="${i}" type="button">עריכה</button><button data-delete="${i}" type="button">מחק</button></div></article>`).join(''):'<p class="empty-places">עדיין לא שמרת מקומות. אפשר לשמור מסעדה, חוף, מלון או מקום שהגעת אליו במקרה.</p>';
+ list.innerHTML=items.length?items.map((p,i)=>{const target=p.query?encodeURIComponent(p.query):`${p.lat},${p.lng}`;return `<article class="saved-place"><div><b>📍 ${esc(p.name)}</b><small>${esc(p.date)}</small><p>${esc(p.note||'ללא הערה')}</p></div><div class="saved-actions"><a href="https://www.google.com/maps/search/?api=1&query=${target}" target="_blank" rel="noopener">מפות</a><button data-edit="${i}" type="button">עריכה</button><button data-delete="${i}" type="button">מחק</button></div></article>`}).join(''):'<p class="empty-places">עדיין לא שמרת מקומות. אפשר לשמור מסעדה, חוף, מלון או מקום שהגעת אליו במקרה.</p>';
  list.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>{const a=read(),p=a[+b.dataset.edit];if(!p)return;const name=prompt('שם המקום',p.name||'');if(name===null||!name.trim())return;const note=prompt('הערה',p.note||'');if(note===null)return;p.name=name.trim();p.note=note.trim();write(a);renderList()});
  list.querySelectorAll('[data-delete]').forEach(b=>b.onclick=()=>{const a=read();a.splice(+b.dataset.delete,1);write(a);renderList()});
 }
