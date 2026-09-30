@@ -215,3 +215,20 @@ if(prepDay&&!prepDay.docs.some(([title])=>title.includes('TDAC'))){
  set("09.10",0,["להגיע ל-BKK לפני טיסת Etihad EY401 ולהציג כרטיס ודרכון.","למסור את המזוודה ולוודא שעל תג הכבודה מופיע TLV.","לאחר הנחיתה באבו דאבי לעקוב אחר Connections / Transfer ולבדוק שער EY593."]);
  set("09.10",1,["לעלות לטיסת EY593 מאבו דאבי לתל אביב.","עם הנחיתה בנתב״ג לאסוף את המזוודה מאזור המסועים."]);
 })();
+
+
+/* Confirmed hotel booking: Grande Centre Point Prestige, 07–09 Oct 2026. */
+(()=> {
+ const V=window.TRIP_V3, day=id=>V.days.find(x=>x.id===id);
+ const voucher="https://drive.google.com/file/d/1oiGoYnIA5H0-ZdvMekGb41mZA42HQRxw/view?usp=drivesdk";
+ const folder="https://drive.google.com/drive/folders/1Vk6GEm29z_JnxYoeii2sP7UtJ2gRP9NM";
+ const hotel={name:"Grande Centre Point Prestige Bangkok",dates:"07–09.10.2026 · שני לילות",checkIn:"07.10 החל מ-14:00",checkOut:"09.10 עד 12:00",status:"מאושר · הזמנה 22886",voucherTitle:"שובר Grande Centre Point Prestige Bangkok · הזמנה 22886",voucher,note:"חדר Prestige Signature King עם ארוחת בוקר ו-Onsen Pass, לאורח אחד. טיסה יוצאת ב-03:15 ב-09.10: לתאם מול המלון יציאה מוקדמת בלילה 08–09 ושמירת מזוודות לפי הצורך."};
+ for(const [id, stay] of [["07.10","כניסה למלון מ-14:00 · לילה ראשון"],["08.10","יום מלא בבנגקוק · לילה שני במלון"],["09.10","יציאה מוקדמת בלילה 08–09 לטיסת 03:15; צ׳ק-אאוט רשמי עד 12:00"]]){
+   const d=day(id); if(!d) continue;
+   d.hotelStays=[hotel]; d.folder=folder; d.docs=d.docs||[];
+   if(!d.docs.some(x=>x[1]===voucher)) d.docs.push(["שובר Grande Centre Point Prestige Bangkok · 07–09.10 · הזמנה 22886",voucher]);
+   if(id==="07.10") d.stay=stay+" · Grande Centre Point Prestige Bangkok";
+   if(id==="08.10") d.stay=stay+" · Grande Centre Point Prestige Bangkok";
+   if(id==="09.10") d.stay=stay+" · Grande Centre Point Prestige Bangkok";
+ }
+})();
