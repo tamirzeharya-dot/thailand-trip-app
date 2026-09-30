@@ -129,3 +129,89 @@ const prepDay=window.TRIP_V3.days.find(day=>day.id==='prep');
 if(prepDay&&!prepDay.docs.some(([title])=>title.includes('TDAC'))){
  prepDay.docs.unshift(['אישור TDAC התקבל - לפתיחה מתיקיית ההכנות','https://drive.google.com/drive/folders/1kwPBGJPVqVVyhkHdBbTb_zgpaDnRLfat']);
 }
+
+/* Trip app update: per-leg booking links, current hotel dates, and Oct 1–3 transfers. */
+(()=> {
+ const V=window.TRIP_V3, day=id=>V.days.find(x=>x.id===id);
+ const d={
+  etihad:"https://drive.google.com/file/d/1FUGVjP8WtyDQ6JYbdtC9zHKKtSt3uv17/view",
+  pg127:"https://drive.google.com/file/d/1CbN0MrM0m0DeMyolQi925dz_hRqOOlMA/view",
+  ferryOut:"https://drive.google.com/file/d/1aPFq-0Z2lKYYH75zGLLAExzUGSz6vDNe/view",
+  littleParadise:"https://drive.google.com/file/d/14IL7LFr5k_ZLTb2JHTiDj6G3XuFYh4Km/view",
+  ferryBack:"https://drive.google.com/file/d/1rDKAUpJqhBU2wlJw4lA1lus0SRY_l4b2/view",
+  samui:"https://drive.google.com/file/d/1CLeYDqQvBmuZZlWBmsghXsodcd6wCQRK/view",
+  pg241:"https://drive.google.com/file/d/1o221H467DDSda8HgyLo7zt-xxgsuzXK_/view",
+  arun:"https://drive.google.com/file/d/1NK-ALRroQwrgZE4s601wGhRICCuydLZs/view",
+  elephants:"https://docs.google.com/document/d/17e6Xv7_dvwUs2FtPIA3jj2lC9f8aWWS5NLa77SfUwDg/edit",
+  paiVan:"https://drive.google.com/file/d/1_IqzOrun-lf02MhYvVaXIGblkbPSENUI/view",
+  paiToChiangMai:"https://drive.google.com/file/d/11tjombOkTJ1OWEegfxyvNXkTaz4iiJ2C/view",
+  pg220:"https://drive.google.com/file/d/1JihNVU2SmhMChpAFUo5lR4fXt7V2uyZ_/view",
+  pullman:"https://drive.google.com/file/d/1-akqfhsk3hwsj8MAy3pRPt2zhOYTj0fY/view",
+  etihadReturn:"https://drive.google.com/file/d/11IJHK64yk6xT4V3lpXW52B60y3ndUIP9/view"
+ };
+ const doc=(title,url)=>[[title,url]];
+ const p25=day("25.09"); if(p25){p25.segments[0].docs=doc("כרטיס Etihad · תל אביב–אבו דאבי",d.etihad);p25.segments[1].docs=doc("כרטיס Etihad · אבו דאבי–בנגקוק",d.etihad);p25.docs=[];}
+ const p26=day("26.09"); if(p26){p26.segments[0].docs=doc("כרטיס PG127 · בנגקוק–קוסמוי",d.pg127);p26.segments[1].docs=doc("כרטיס Haad Rin Queen · קוסמוי–קופנגן",d.ferryOut);p26.docs=[];}
+ const p27=day("27.09"); if(p27){p27.segments[0].docs=doc("כרטיס Haad Rin Queen · קופנגן–קוסמוי",d.ferryBack);p27.docs=[];}
+ const p28=day("28.09"); if(p28){p28.segments[0].docs=doc("כרטיס PG241 · קוסמוי–צ׳יאנג מאי",d.pg241);p28.docs=[];}
+ const p29=day("29.09"); if(p29){p29.segments[0].docs=doc("אישור Elephant Nature Park",d.elephants);p29.segments[3].docs=doc("כרטיס Prem Pracha · צ׳יאנג מאי–פאי",d.paiVan);p29.docs=[];}
+ const p30=day("30.09"); if(p30){
+  p30.title="פאי · זיפליין וטיול פרטי";
+  p30.segments=[
+   {from:"Reverie Siam Resort, פאי",to:"Pai Zipline",depart:"10:45",arrive:"פעילות ב-11:00",duration:"לפי לוח הפעילות",mode:"הסעת Pai Zipline, איסוף מהלובי",luggage:"נשארת במלון",statusLabel:"בוצע",ticketNote:"ההזמנה אושרה בהתכתבות; אין שובר PDF. ההסעה הלוך וחזור כלולה לפי אישור הפעילות.",steps:["להיות בלובי Reverie Siam בשעה 10:45.","להציג שם למפעיל ולשלם במקום לפי תנאי ההזמנה.","ההסעה הלוך וחזור כלולה; לא לשלם שוב על ההעברה."],nav:[["מיקום Pai Zipline","https://www.google.com/maps/search/?api=1&query=Pai+Zipline+Thailand"]]},
+   {from:"Pai Zipline",to:"Reverie Siam Resort, פאי",depart:"אחרי הפעילות",arrive:"לא נמסרה שעה",mode:"הסעת Pai Zipline",luggage:"נשארת במלון",statusLabel:"בוצע",ticketNote:"ההסעה חזרה כלולה באישור הפעילות.",steps:["לעלות להסעת החזרה של המפעיל.","אין צורך להזמין Grab נפרד."],nav:[["מיקום Reverie Siam Resort","https://www.google.com/maps/search/?api=1&query=Reverie+Siam+Resort+Pai"]]},
+   {from:"Reverie Siam Resort, פאי",to:"Pambok Waterfall",depart:"לא נמסרה שעה",arrive:"לא נמסרה שעה",mode:"נהג פרטי ליום שלם",luggage:"נשארת ברכב עם הנהג",statusLabel:"בוצע",ticketNote:"נהג פרטי; תוספת תשלום הוסכמה. לא נמסר כרטיס נסיעה נפרד.",steps:["להתחיל את מסלול הנהג הפרטי.","התחנה הראשונה: Pambok Waterfall."],nav:[["Pambok Waterfall","https://www.google.com/maps/search/?api=1&query=Pambok+Waterfall+Pai"]]},
+   {from:"Pambok Waterfall",to:"Bamboo Bridge (Khokuso)",depart:"לא נמסרה שעה",arrive:"לא נמסרה שעה",mode:"אותו נהג פרטי",luggage:"נשארת ברכב",statusLabel:"בוצע",ticketNote:"אין כרטיס נפרד; המעבר כלול בסיכום עם הנהג.",steps:["לחזור לרכב בנקודת האיסוף שסוכמה.","להמשיך ל-Bamboo Bridge."],nav:[["Bamboo Bridge Pai","https://www.google.com/maps/search/?api=1&query=Bamboo+Bridge+Pai+Thailand"]]},
+   {from:"Bamboo Bridge (Khokuso)",to:"Pai Canyon",depart:"לא נמסרה שעה",arrive:"הגעה משוערת 16:40–16:50",mode:"אותו נהג פרטי",luggage:"נשארת ברכב",statusLabel:"בוצע",ticketNote:"אין כרטיס נפרד; המעבר כלול בסיכום עם הנהג.",steps:["להמשיך עם הנהג ל-Pai Canyon.","ההגעה הוערכה סביב 16:40–16:50; שעות מדויקות לא נרשמו."],nav:[["Pai Canyon","https://www.google.com/maps/search/?api=1&query=Pai+Canyon+Thailand"]]},
+   {from:"Pai Canyon",to:"Two Huts Pai",depart:"לא נמסרה שעה",arrive:"לא נמסרה שעה",mode:"אותו נהג פרטי",luggage:"נשארת ברכב",statusLabel:"בוצע",ticketNote:"אין כרטיס נפרד; המעבר כלול בסיכום עם הנהג.",steps:["להמשיך לתחנה האחרונה: Two Huts Pai.","לאחר הביקור לחזור למלון עם הנהג."],nav:[["Two Huts Pai","https://www.google.com/maps/search/?api=1&query=Two+Huts+Pai"]]}
+  ];
+  p30.docs=[];
+ }
+ const p01=day("01.10"); if(p01){
+  p01.title="פאי → צ׳יאנג מאי → בנגקוק";
+  p01.segments=[
+   {from:"Pai Walking Street, פאי",to:"Chiang Mai Arcade 2",depart:"13:00",arrive:"16:55 משוער",duration:"כ-3:55 שעות",mode:"Prem Pracha, מיניוואן, קו 2-A14",luggage:"עד 15 ק״ג; מושב 3E",statusLabel:"מאושר ומשולם · הזמנה 62KBURBC",ticketNote:"להגיע לתחנה ב-12:30, 30 דקות לפני היציאה. להציג את השובר; הדפסה אינה חובה.",docs:doc("כרטיס Prem Pracha · פאי–צ׳יאנג מאי",d.paiToChiangMai),steps:["לבצע צ׳ק-אאוט מ-Reverie Siam עד 12:00.","להגיע ל-Pai Walking Street עד 12:30.","לאתר את Prem Pracha ולהציג את השובר.","לעלות למיניוואן של 13:00; התחנה הבאה Chiang Mai Arcade 2."],nav:[["מיקום העלייה, Pai Walking Street","https://www.google.com/maps/search/?api=1&query=Pai+Walking+Street+Bus+Station"],["נקודת ההורדה, Chiang Mai Arcade 2","https://www.google.com/maps/search/?api=1&query=Chiang+Mai+Arcade+2"]]},
+   {from:"Chiang Mai Arcade 2",to:"Chiang Mai International Airport (CNX)",depart:"אחרי ההגעה ב-16:55",arrive:"להגיע עד 18:50",duration:"זמן הנסיעה משתנה לפי התנועה",mode:"Grab או מונית · לא הוזמן מראש",luggage:"איתך",statusLabel:"פתוח לביצוע היום",ticketNote:"אין כרטיס נסיעה; מזמינים Grab או מונית מהתחנה לשדה.",steps:["לרדת בתחנת Chiang Mai Arcade 2.","לפתוח Grab או לקחת מונית ולכוון ל-Chiang Mai International Airport (CNX).","לכוון להגעה לשדה עד 18:50, כשעתיים לפני PG220.","בטרמינל לבדוק במסכי Departures את דלפק הצ׳ק-אין והשער."],nav:[["מסלול Arcade 2 לשדה CNX","https://www.google.com/maps/dir/?api=1&origin=Chiang+Mai+Arcade+2&destination=Chiang+Mai+International+Airport"]]},
+   {from:"Chiang Mai International Airport (CNX)",to:"Suvarnabhumi Airport (BKK), Bangkok",depart:"20:50",arrive:"22:15 משוער",duration:"כ-1:25 שעות",mode:"Bangkok Airways PG220",luggage:"למסור ב-CNX ולאסוף ב-BKK",statusLabel:"מאושר · שעת ההמראה עודכנה ל-20:50",ticketNote:"כרטיס Drive עדיין מציג 20:00; שעת הטיסה המעודכנת היא 20:50. לבדוק את לוח הטיסות והשער במסכי השדה.",docs:doc("כרטיס PG220 · שעת המראה מעודכנת 20:50",d.pg220),steps:["לבצע צ׳ק-אין ל-PG220 בדלפק Bangkok Airways ב-CNX.","למסור את המזוודה ולשמור את תג הכבודה.","לוודא במסכים את השער והשעה המעודכנת 20:50.","לאחר הנחיתה ב-BKK לאסוף את המזוודה."],nav:[["נמל התעופה CNX","https://www.google.com/maps/search/?api=1&query=Chiang+Mai+International+Airport"],["נמל התעופה BKK","https://www.google.com/maps/search/?api=1&query=Suvarnabhumi+Airport"]]},
+   {from:"Suvarnabhumi Airport (BKK)",to:"Pullman Bangkok Hotel G, 188 Silom Road",depart:"אחרי איסוף המזוודה",arrive:"סביב 23:00, לפי הערכת המלון",duration:"משתנה לפי התנועה",mode:"מונית רשמית או Grab · לא הוזמן מראש",luggage:"איתך",statusLabel:"הזמנת המלון נשמרת להגעה מאוחרת",ticketNote:"אין כרטיס מונית. קבלת המלון אישרה לשמור את החדר להגעה סביב 23:00.",steps:["לצאת לאזור המוניות או נקודת איסוף Grab ב-BKK.","להגדיר יעד Pullman Bangkok Hotel G, 188 Silom Road.","עם ההגעה להציג דרכון ולבצע צ׳ק-אין מאוחר; הקבלה פעילה 24 שעות."],nav:[["ניווט ל-Pullman Bangkok Hotel G","https://www.google.com/maps/search/?api=1&query=Pullman+Bangkok+Hotel+G+188+Silom+Road"]]}
+  ];
+  p01.docs=[];
+ }
+ const p02=day("02.10"); if(p02){
+  p02.chabad.event="יום שישי 2.10: הדלקת נרות ב-17:49. הרשמה לסעודה מראש.";
+  p02.chabad.registration="https://chabadthailand.co.il/shabbat/";
+  p02.segments=[{from:"Pullman Bangkok Hotel G, 188 Silom Road",to:"בית חב״ד בנגקוק, 18 Phra Athit Road",depart:"לקבוע לאחר הרשמה",arrive:"לפני 17:49",mode:"Grab או מונית · לא הוזמן",luggage:"בלי מזוודה; מסמכים וטלפון",statusLabel:"פתוח · נדרשת הרשמה מראש",ticketNote:"אין אישור לסעודה עדיין. הרשמה דרך עמוד שבת/חג הרשמי או בטלפון.",steps:["להירשם מראש לסעודת שבת/חג באתר בית חב״ד.","לאחר קבלת אישור, לקבוע שעת יציאה מהמלון ולהזמין Grab/מונית.","כתובת: 18 Phra Athit Road, Chana Songkhram, Phra Nakhon.","להגיע לפני הדלקת הנרות בשעה 17:49."],docs:doc("הרשמה רשמית לשבת/חג בבית חב״ד", "https://chabadthailand.co.il/shabbat/"),nav:[["בית חב״ד בנגקוק","https://www.google.com/maps/search/?api=1&query=Chabad+House+Bangkok+18+Phra+Athit+Road"],["האתר הרשמי","https://chabadthailand.co.il/houses/bangkok/"],["טלפון / WhatsApp בית חב״ד","tel:+6626292770"]]}];
+  p02.docs=[];
+ }
+ const p03=day("03.10"); if(p03){
+  p03.segments=[{from:"Pullman Bangkok Hotel G",to:"מקום הלינה הבא בבנגקוק או נקודת היציאה שתיבחר",depart:"לאחר צ׳ק-אאוט עד 12:00",arrive:"טרם נקבע",mode:"טרם הוזמן",luggage:"איתך; לשאול בקבלה על שמירת חפצים אם צריך",statusLabel:"פתוח · יעד ותחבורה טרם נקבעו",ticketNote:"לא נמצא שובר לינה לאחר 3.10. יש להשלים הזמנת לינה/תחבורה לפני הצ׳ק-אאוט.",steps:["לבצע צ׳ק-אאוט מה-Pullman עד 12:00.","היעד הבא והנסיעה אליו עדיין פתוחים לבחירה ולהזמנה.","להוסיף את השובר והוראות ההגעה ללג לאחר סגירת ההזמנה."]}];
+  p03.stay="צ׳ק-אאוט מ-Pullman עד 12:00; לינה לאחר 3.10 טרם נסגרה.";
+ }
+ const hotel=(id,item)=>{const x=day(id);if(x)x.hotelStays=[item];};
+ hotel("26.09",{name:"Little Paradise, Koh Phangan",dates:"26–28.09.2026 · שני לילות לפי השובר",checkIn:"26.09, 15:00–22:00",checkOut:"28.09 עד 11:00",status:"מאושר לפי השובר",voucherTitle:"שובר Little Paradise",voucher:d.littleParadise,note:"המסלול מציג מעבורת לקוסמוי כבר ב-27.09. תאריך היציאה מהמלון בפועל אינו מופיע בכרטיס המעבורת; השובר עצמו מציג יציאה ב-28.09."});
+ hotel("27.09",{name:"Samui Pier Beach Front Resort, Koh Samui",dates:"27–28.09.2026 · לילה אחד",checkIn:"27.09, 14:00–22:00",checkOut:"28.09 עד 12:00",status:"מאושר לפי השובר",voucherTitle:"שובר Samui Pier Beach Front Resort",voucher:d.samui,note:"המונית לשדה הוזמנה דרך המלון ל-28.09 בשעה 06:20."});
+ hotel("28.09",{name:"Arun Rawee, Chiang Mai",dates:"28–29.09.2026 · לילה אחד",checkIn:"28.09, 14:00–24:00",checkOut:"29.09 עד 12:00",status:"מאושר לפי השובר",voucherTitle:"שובר Arun Rawee",voucher:d.arun,note:"המזוודות נשמרו במלון לאחר הצ׳ק-אאוט ועד החזרה מהפילים."});
+ hotel("29.09",{name:"Reverie Siam Resort, Pai",dates:"29.09–01.10.2026 · שני לילות",checkIn:"29.09 החל מ-14:00",checkOut:"01.10 עד 12:00",status:"מאושר לפי השובר",voucherTitle:"שובר Reverie Siam Resort",voucher:"https://mail.google.com/mail/u/?authuser=tamir.zeharya%40gmail.com#all/1a08156e1ec85b42",note:"ההזמנה אושרה לשני לילות; יש לבצע צ׳ק-אאוט עד 12:00 לפני הנסיעה לתחנת Pai Walking Street."});
+ const pullman={name:"Pullman Bangkok Hotel G, 188 Silom Road",dates:"01–03.10.2026 · שני לילות",checkIn:"01.10 החל מ-15:00 · הגעה מאוחרת סביב 23:00 תואמה",checkOut:"03.10 עד 12:00",status:"מאושר · החדר נשמר להגעה מאוחרת",voucherTitle:"שובר Pullman Bangkok Hotel G",voucher:d.pullman,note:"המלון אישר לשמור את החדר. קבלה פעילה 24 שעות."};
+ hotel("01.10",pullman);hotel("02.10",pullman);hotel("03.10",pullman);
+ const p09=day("09.10"); if(p09){p09.segments[0].docs=doc("כרטיס Etihad · בנגקוק–אבו דאבי",d.etihadReturn);p09.segments[1].docs=doc("כרטיס Etihad · אבו דאבי–תל אביב",d.etihadReturn);p09.docs=[];}
+})();
+
+/* Clear step-by-step instructions for already-booked travel legs. */
+(()=> {
+ const V=window.TRIP_V3, day=id=>V.days.find(x=>x.id===id);
+ const set=(id,i,steps)=>{const d=day(id);if(d&&d.segments?.[i])d.segments[i].steps=steps;};
+ set("25.09",0,["להגיע לדלפק Etihad בנתב״ג ולבצע צ׳ק-אין.","למסור את המזוודה ולבדוק שעל תג הכבודה מופיע היעד הסופי Bangkok (BKK).","לשמור את כרטיס העלייה למטוס לטיסת EY594."]);
+ set("25.09",1,["אחרי הנחיתה באבו דאבי, לעקוב אחר השילוט Connections / Transfer.","לבדוק במסכי השדה את שער טיסת ההמשך EY402 לבנגקוק.","להמשיך לשער בלי לצאת לביקורת גבולות או לאיסוף כבודה."]);
+ set("26.09",0,["אחרי הנחיתה ב-BKK ב-06:45 לעבור ביקורת דרכונים ולאסוף מזוודה.","להמשיך לאזור טיסות הפנים ולבצע צ׳ק-אין ל-PG127.","למסור מחדש את המזוודה, לעבור בידוק ולהגיע לשער לפי המסכים.","הטיסה יוצאת ב-10:10 ונוחתת בקוסמוי ב-11:40."]);
+ set("26.09",1,["לאסוף את המזוודה בשדה קוסמוי.","לקחת מונית לנקודת היציאה של Haad Rin Queen; נקודת הרציף המדויקת מופיעה בשובר ויש לאמת מול המפעיל.","להגיע לפחות 30 דקות לפני היציאה ב-15:00 ולהציג את הכרטיס.","לרדת בהאד רין ולהגיע ל-Little Paradise לביצוע צ׳ק-אין."]);
+ set("27.09",0,["לצאת מ-Little Paradise ולהגיע ל-Haad Rin Pier.","להגיע עד 15:15 ולהציג את שובר 12GO ששולם.","לעלות ל-Haad Rin Queen של 16:00 לקוסמוי.","אחרי ההגעה ב-16:50 לקחת מונית ל-Samui Pier Beach Front Resort ולבצע צ׳ק-אין."]);
+ set("28.09",0,["לצאת מהמלון לקראת הטיסה; המונית שהוזמנה דרך המלון נקבעה ל-06:20.","לבצע צ׳ק-אין ל-PG241 בשדה קוסמוי ולמסור את המזוודה.","לבדוק במסכים את השער ולהגיע בזמן ליציאה ב-08:55.","לאסוף את המזוודה ב-CNX ולקחת מונית או Grab ל-Arun Rawee."]);
+ set("29.09",0,["להיות בלובי Arun Rawee לפני 07:30 עם תיק יום בלבד.","להציג את שם ההזמנה לנהג של Elephant Nature Park ולעלות להסעה.","הפעילות בפארק כוללת סיור וארוחת צהריים; המזוודות נשארות במלון.","להשתמש באותו שירות הסעה לחזרה למלון, סביב 14:30."]);
+ set("29.09",1,["להמתין בנקודת ההורדה של הפארק ולעלות להסעת החזרה.","לבקש מהמדריך להוריד ראשון ככל האפשר בגלל ואן לפאי אחר הצהריים.","להגיע ל-Arun Rawee, לאסוף את כל המזוודות ולצאת לתחנת Arcade 2."]);
+ set("29.09",2,["לאסוף מהמלון את כל המזוודות.","להזמין Grab או מונית ל-Chiang Mai Arcade 2.","לכוון להגעה לתחנה עד 15:45 ולמצוא דלפק/רציף Prem Pracha."]);
+ set("29.09",3,["להגיע לרציף Prem Pracha ב-Chiang Mai Arcade 2 ולהציג כרטיס.","לעלות למיניוואן שיוצא בפועל ב-15:30; הגעה משוערת לפאי סביב 19:50.","בתחנת Pai לקחת מונית או הסעת מלון ל-Reverie Siam Resort."]);
+ set("29.09",4,["אחרי הירידה בתחנת Pai, לבקש מונית מקומית או להתקשר למלון להסעה.","למסור לנהג את היעד Reverie Siam Resort.","לבדוק בקבלה שההזמנה לשני הלילות מאושרת."]);
+ set("09.10",0,["להגיע ל-BKK לפני טיסת Etihad EY401 ולהציג כרטיס ודרכון.","למסור את המזוודה ולוודא שעל תג הכבודה מופיע TLV.","לאחר הנחיתה באבו דאבי לעקוב אחר Connections / Transfer ולבדוק שער EY593."]);
+ set("09.10",1,["לעלות לטיסת EY593 מאבו דאבי לתל אביב.","עם הנחיתה בנתב״ג לאסוף את המזוודה מאזור המסועים."]);
+})();
