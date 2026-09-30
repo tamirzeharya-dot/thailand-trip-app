@@ -86,7 +86,7 @@ function addTask(defaultDate='ללא תאריך'){
  customTasks.push({id:'custom-task-'+Date.now(),title:title.trim(),date:date.trim()||'ללא תאריך',place:place.trim(),detail:detail.trim(),status:'open'});saveCustomTasks();window.openAlerts();
 }
 window.openAlerts=function(){const p=$('#inlinePanel'),all=tasks(),open=all.filter(x=>x.status==='open'),done=all.filter(x=>x.status==='done');p.innerHTML='<div class="inline-head"><div><small>'+done.length+' בוצעו · '+open.length+' פתוחות</small><h2>📋 מרכז משימות</h2></div><button id="closeAlerts" class="close-red" type="button">סגור</button></div><section class="info-card task-create-card"><button id="addTaskBtn" class="add-btn" type="button">+ הוסף משימה חדשה</button></section><section class="info-card"><h3>🟠 פתוחות והמשך הטיול</h3>'+(open.length?open.map(x=>taskMarkup(x,true)).join(''):'<p class="tasks-empty">אין משימות פתוחות.</p>')+'</section><section class="info-card"><h3>🟢 בוצעו ומה שכבר היה</h3>'+(done.length?done.map(x=>taskMarkup(x,true)).join(''):'<p class="tasks-empty">עדיין אין משימות שבוצעו.</p>')+'</section>';p.classList.add('show');p.onclick=handleTaskAction;$('#addTaskBtn').onclick=()=>addTask();$('#closeAlerts').onclick=()=>{p.classList.remove('show');p.innerHTML=''};p.scrollIntoView({behavior:'smooth',block:'start'})}
-
+;
 
 /* Trip app update: current operational reminders and completed trip tasks. */
 (()=>{
