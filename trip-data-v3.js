@@ -239,3 +239,20 @@ const routes={"01.10":[{"icon":"📍","title":"הלילה אחרי הצ׳ק־א�
 for(const [id, options] of Object.entries(routes)){const d=window.TRIP_V3.days.find(x=>x.id===id);if(!d)continue;d.optionalRoutes=[...(d.optionalRoutes||[]),...options];d.flex=(d.flex||"")+" עדיפות להליכה עם ניווט לכל לג; לבחור פעילות לפי החשק, הכוח ומזג האוויר. פעילות ערב גאה היא אפשרות לכל שהייה בבנגקוק. ב-2.10 לתאם עם תוכנית בית חב״ד; ב-8.10 לסיים בזמן ליציאה לשדה.";}
 for(const p of [["The Stranger Bar Bangkok","https://www.google.com/maps/search/?api=1&query=The%20Stranger%20Bar%20Bangkok"],["DJ Station Bangkok","https://www.google.com/maps/search/?api=1&query=DJ%20Station%20Bangkok"],["Patpong Night Market Bangkok","https://www.google.com/maps/search/?api=1&query=Patpong%20Night%20Market%20Bangkok"],["Maxwell Onsen Bangkok","https://www.google.com/maps/search/?api=1&query=Maxwell%20Onsen%20Bangkok"],["Sauna Mania Bangkok","https://www.google.com/maps/search/?api=1&query=Sauna%20Mania%20Bangkok"],["Natural Touch Saladaeng Silom Bangkok","https://www.google.com/maps/search/?api=1&query=Natural%20Touch%20Saladaeng%20Silom%20Bangkok"],["Prodive Imaging Maneeya Center North Bangkok","https://www.google.com/maps/search/?api=1&query=Prodive%20Imaging%20Maneeya%20Center%20North%20Bangkok"],["Talat Noi Bangkok","https://www.google.com/maps/search/?api=1&query=Talat%20Noi%20Bangkok"],["Song Wat Road Bangkok","https://www.google.com/maps/search/?api=1&query=Song%20Wat%20Road%20Bangkok"],["Yaowarat Road Bangkok","https://www.google.com/maps/search/?api=1&query=Yaowarat%20Road%20Bangkok"],["Lumphini Park Bangkok","https://www.google.com/maps/search/?api=1&query=Lumphini%20Park%20Bangkok"],["Benjakitti Park Bangkok","https://www.google.com/maps/search/?api=1&query=Benjakitti%20Park%20Bangkok"],["Bangkok Art and Culture Centre","https://www.google.com/maps/search/?api=1&query=Bangkok%20Art%20and%20Culture%20Centre"]]){if(!window.TRIP_V3.mapPoints.some(x=>x[0]===p[0]))window.TRIP_V3.mapPoints.push(p);}
 })();
+
+/* Pullman breakfast and Club benefits transcribed from guest welcome sheet, 2026-10-02. */
+(function(){
+const benefits=[
+{title:"ארוחת בוקר בלאונג׳",text:"Executive Club Lounge, קומה 27. שני עד שישי 06:00–10:30; שבת, ראשון וחגים 06:00–11:00. כלול בהטבות Club לפי דף המלון."},
+{title:"ארוחת בוקר חלופית ב־Tiva",text:"Tiva, קומה 2: שני עד שישי 06:00–10:30; שבת, ראשון וחגים 06:00–11:00. תפריט à la carte לארוחת בוקר 09:00–10:30. לפי דף ההטבות ניתן לבחור בלאונג׳ או ב־Tiva."},
+{title:"לאונג׳ ותה אחר הצהריים",text:"לאונג׳ קומה 27 פתוח מדי יום 06:00–19:00. Afternoon Tea עם כיבוד קל 14:00–16:00."},
+{title:"משקאות וכיבוד ערב",text:"17:00–19:00 בלאונג׳ או בלובי, בכפוף לזמינות. כולל מבחר יין הבית, קוקטיילים, בירה ומשקאות קלים."},
+{title:"הטבות Club נוספות",text:"צ׳ק־אאוט עד 16:00 בכפוף לזמינות, שירות כביסה מהירה ללא תוספת למחיר הרגיל, שיחות מקומיות למספרים שמתחילים ב־02, ושימוש חד־פעמי בחדר הישיבות בלאונג׳."}
+];
+for(const day of window.TRIP_V3.days){
+if(["01.10","02.10","03.10"].includes(day.id)){
+day.hotelBenefits=benefits;
+day.hotelBenefitsSource="לפי דף WELCOME לאורחי Club Room שצולם במלון.";
+day.hotelBreakfastToday=day.id==="02.10"?"יום שישי 2.10: ארוחת בוקר 06:00–10:30, לאונג׳ קומה 27 או Tiva קומה 2.":day.id==="03.10"?"שבת 3.10: ארוחת בוקר 06:00–11:00, לאונג׳ קומה 27 או Tiva קומה 2.":"ארוחת הבוקר הראשונה לאחר ההגעה: שישי 2.10, 06:00–10:30.";
+}}
+})();
