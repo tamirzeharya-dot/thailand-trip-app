@@ -42,7 +42,7 @@ function docsCard(day){
 }
 function stayCard(day){
  const stays=day.hotelStays||[];if(!stays.length)return'';
- return stays.map(s=>'<section class="info-card stay-card"><h3>🏨 הזמנת לינה</h3><strong>'+esc(s.name)+'</strong><p>'+esc(s.dates||'')+'</p><p><b>צ׳ק-אין:</b> '+esc(s.checkIn||'לפי השובר')+'</p><p><b>צ׳ק-אאוט:</b> '+esc(s.checkOut||'לפי השובר')+'</p><p><b>סטטוס:</b> '+esc(s.status||'')+'</p>'+(s.note?'<p class="verify">'+esc(s.note)+'</p>':'')+(s.voucher?'<div class="action-stack"><a href="'+esc(s.voucher)+'" target="_blank" rel="noopener">📄 פתח את '+esc(s.voucherTitle||'שובר ההזמנה')+'</a></div>':'')+'</section>').join('');
+ return hotelBenefitsCard(day)+stays.map(s=>'<section class="info-card stay-card"><h3>🏨 הזמנת לינה</h3><strong>'+esc(s.name)+'</strong><p>'+esc(s.dates||'')+'</p><p><b>צ׳ק-אין:</b> '+esc(s.checkIn||'לפי השובר')+'</p><p><b>צ׳ק-אאוט:</b> '+esc(s.checkOut||'לפי השובר')+'</p><p><b>סטטוס:</b> '+esc(s.status||'')+'</p>'+(s.note?'<p class="verify">'+esc(s.note)+'</p>':'')+(s.voucher?'<div class="action-stack"><a href="'+esc(s.voucher)+'" target="_blank" rel="noopener">📄 פתח את '+esc(s.voucherTitle||'שובר ההזמנה')+'</a></div>':'')+'</section>').join('');
 }
 function chabadCard(c){if(!c)return'';const a=[['📍 נווט לבית חב״ד',c.maps],['🌐 אתר בית חב״ד',c.site]];if(c.phone)a.push(['📞 התקשר',c.phone]);if(c.registration)a.push(['📝 הרשמה לשבת/חג',c.registration]);const valid=a.filter(([,u])=>typeof u==='string'&&/^(https?:|tel:|mailto:)/i.test(u));if(!valid.length)return'';return '<section class="info-card"><h3>✡️ בית חב״ד קרוב</h3><strong>'+esc(c.name)+'</strong>'+(c.event?'<p class="verify">'+esc(c.event)+'</p>':'')+linkButtons(valid)+'</section>';}
 function flexCard(day){return `<section class="info-card"><h3>🕊️ זמן חופשי לשינויים</h3><p>${esc(day.flex||'להשאיר זמן חופשי להחלטה במקום.')}</p></section>`;}
@@ -87,3 +87,8 @@ renderDays();
 
 // Optional legs are displayed individually without controls for booked travel legs.
 function optionalMovementCard(s,idx,dayId){const html=movementCard(s,idx,dayId);const k=html.indexOf('<div class="item-edit-actions">');return k<0?html:html.slice(0,k)+'</article>';}
+
+function hotelBenefitsCard(day){
+ if(!day.hotelBenefits?.length)return '';
+ return '<section class="info-card"><h3>☕ ארוחת בוקר והטבות המלון</h3><p><b>'+esc(day.hotelBreakfastToday||'')+'</b></p>'+day.hotelBenefits.map(x=>'<p><b>'+esc(x.title)+':</b> '+esc(x.text)+'</p>').join('')+'<small>'+esc(day.hotelBenefitsSource||'')+'</small></section>';
+}
