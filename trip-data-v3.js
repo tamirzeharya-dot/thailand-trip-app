@@ -292,3 +292,19 @@ replaceDay("05.10",{
 });
 for(const p of [["Phuket International Airport",maps("Phuket International Airport")],["Novotel Phuket Kamala Beach",maps("Novotel Phuket Kamala Beach")],["Kamala Beach",maps("Kamala Beach Phuket")],["Old Phuket Town",maps("Old Phuket Town")],["Scuba Quest Dive Center Kamala",maps("Scuba Quest Dive Center Kamala Phuket")]]){if(!t.mapPoints.some(x=>x[0]===p[0]))t.mapPoints.push(p);}
 })();
+
+/* PHUKET-PEPPER-COOKIE-20261003 */
+(function(){
+ const t=window.TRIP_V3;
+ const d=t.days.find(x=>x.id==="03.10");
+ if(!d)return;
+ d.tasted=d.tasted||[];
+ d.tasted.push({
+   name:"עוגיית הפלפל שהנהג נתן לי בפוקט",
+   thai:"ขนมพริกไทยทอด (כפי שתואר בשיחה; שם מדויק לבדיקה)",
+   where:"פוקט · מהנהג בדרך/באזור קמאלה",
+   verdict:"טעים מאוד — חייב למצוא שוב",
+   note:"לחפש איפה קונים בפוקט ולמצוא מתכון להכנה בבית. יש צילום מקורי מהטיול.",
+   photo:"צילום נשמר בשיחה · 03.10.2026"
+ });
+})();
