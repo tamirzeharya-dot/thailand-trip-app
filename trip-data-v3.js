@@ -350,3 +350,12 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
  {from:"בריכת המלון",to:"Kamala Beach",depart:"לקראת השקיעה",arrive:"לפני השקיעה",duration:"עד אחרי השקיעה",mode:"ברגל",statusLabel:"חוף + שקיעה",steps:["להגיע לחוף בזמן לאור שלפני השקיעה.","תמונות בשקיעה.","אחרי השקיעה לחזור למלון ולנוח."]}
  ]);
 })();
+
+/* LIVE-PHUKET-OCT4-5-FINAL-PLAN */
+(function(){
+ var days=(window.TRIP_DATA&&window.TRIP_DATA.days)||[];
+ var d4=days.find(function(x){return x.date==="04.10";});
+ if(d4){d4.title="פוקט · ריזורט + ערב פטונג עם סטיבן"; d4.notes=(d4.notes||[]).concat(["19:50 — יציאה עם סטיבן לכיוון Patong Beach.","ערב חופשי בפטונג: חוף/טיילת, Bangla Road לפי החשק, אוכל וחזרה לקמאלה."]); d4.legs=(d4.legs||[]).concat([{from:"Novotel Phuket Kamala Beach / Kamala",to:"Patong Beach",depart:"ערב 04.10",arrive:"",duration:"לפי תנועה",mode:"עם סטיבן",statusLabel:"ערב בפטונג",steps:["Patong Beach והטיילת.","Bangla Road כאופציה, לא חובה.","לחזור למלון ולנוח לקראת יום הטיסה."]}]);}
+ var d5=days.find(function(x){return x.date==="05.10";});
+ if(d5){d5.title="פוקט · Kathu Waterfall + יום אחרון + טיסת לילה לבנגקוק"; d5.notes=(d5.notes||[]).concat(["Kathu Waterfall — יעד מועדף לבוקר; חינם; עונת גשמים ולכן צפויה זרימה טובה. להימנע מסלעים/מים בזמן גשם כבד.","נשלח מייל לעיריית Kathu לבירור פתיחה ומצב כניסה למים ל-05.10.","טיסת AirAsia לבנגקוק נסגרה לערב/לילה; לפי המידע שנמסר: נחיתה בבנגקוק ~01:30. שעה ומספר טיסה עדיין דורשים אימות מהכרטיס."]); d5.legs=(d5.legs||[]).concat([{from:"Novotel Phuket Kamala Beach",to:"Kathu Waterfall",depart:"בוקר 05.10",arrive:"",duration:"כשעה–שעתיים באתר",mode:"Grab / מונית",statusLabel:"יעד מועדף · בכפוף למזג אוויר",steps:["נעלי אחיזה ובגד ים.","הבריכות רדודות — יותר שכשוך/התרעננות משחייה ממש.","לא להיכנס למים בזמן גשם חזק או זרימה מסוכנת."]},{from:"Phuket",to:"Bangkok",depart:"ערב/לילה 05.10 · AirAsia",arrive:"~01:30 לפי ההזמנה שנמסרה",duration:"",mode:"טיסה",statusLabel:"סגור · פרטי טיסה לאימות",steps:["להשאיר מרווח גדול לשדה ולכבודה.","לא לתכנן פעילות מאוחרת מדי לפני היציאה לשדה."]}]);}
+})();
