@@ -371,3 +371,6 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
 
 /* OCT5-FREE-LUGGAGE-STORAGE */
 (function(){var d=((window.TRIP_DATA&&window.TRIP_DATA.days)||[]).find(function(x){return x.date==="05.10";});if(!d)return;d.notes=(d.notes||[]).concat(["המלון אישר שמירת חפצים חינם אחרי הצ׳ק-אאוט עד השעה הרצויה.","תכנית: צ׳ק-אאוט → להשאיר את כל המזוודות במלון → לצאת לכל היום רק עם תיק קטן ומים → לחזור למלון לאיסוף → HKT."]);d.legs=(d.legs||[]).concat([{from:"Novotel Phuket Kamala Beach",to:"שמירת חפצים במלון",depart:"אחרי צ׳ק-אאוט",arrive:"",duration:"כל היום",mode:"חינם",statusLabel:"מזוודות נשארות במלון",steps:["להשאיר את כל המזוודות בשמירת החפצים.","לצאת רק עם תיק קטן, מים וציוד ליום.","לחזור לאיסוף לפני היציאה לשדה."]}]);})();
+
+/* LIVE-APP-FIX-OCT5-CANONICAL */
+(function(){var d=((window.TRIP_DATA&&window.TRIP_DATA.days)||[]).find(function(x){return x.date==="05.10";});if(!d)return;d.title="פוקט · Kathu Waterfall + יום חופשי ללא מזוודות + SL765 לבנגקוק";d.notes=(d.notes||[]).filter(function(n){return !/AirAsia|01:30|1:30/.test(n);}).concat(["שמירת חפצים חינם במלון אחרי הצ׳ק-אאוט עד היציאה לשדה.","כל היום בחוץ רק עם תיק קטן ומים; חוזרים למלון לאסוף מזוודות לפני השדה.","Thai Lion Air SL765: HKT 22:05 → DMK T2 23:30."]);})();
