@@ -339,3 +339,14 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
   d.legs=(d.legs||[]).filter(function(l){return !(l.to||"").match(/Wanna Laundry|Self Service Laundry|כביסה מקומית/);});
   d.legs.unshift({from:"קמאלה",to:"Novotel Phuket Kamala Beach",depart:"~14:10",arrive:"~14:30",duration:"כ-20 דקות",mode:"חזרה למלון",statusLabel:"כביסה הושלמה · 100 THB",steps:["חזרה למלון עם הכביסה הנקייה.","מנוחה/בריכה/חוף לפני פעילות הערב."]});
 })();
+
+/* LIVE-PHUKET-OCT4-RESORT-AFTERNOON */
+(function(){
+ var d=(window.TRIP_DATA&&window.TRIP_DATA.days||[]).find(function(x){return x.date==="04.10";}); if(!d)return;
+ d.title="פוקט · אחה״צ ריזורט, בריכה, חוף ושקיעה";
+ d.notes=(d.notes||[]).concat(["החלטה: אחרי ההליכה והכביסה — לא לרוץ לעוד אטרקציות. ליהנות מה-Novotel ומהחוף.","לטעון את הטלפון לפני הצילומים והשקיעה.","Phuket FantaSea נשאר אופציה בלבד לערב — להחליט אחרי השקיעה לפי האנרגיה."]);
+ d.legs=(d.legs||[]).concat([
+ {from:"Novotel Phuket Kamala Beach",to:"בריכה / ריזורט",depart:"אחרי החזרה למלון",arrive:"",duration:"רגוע",mode:"ברגל",statusLabel:"מנוחה + טעינת טלפון",steps:["להניח את הכביסה בחדר.","לחבר את הטלפון לטעינה.","בריכה ומנוחה.","לצלם כמה תמונות בריזורט."]},
+ {from:"בריכת המלון",to:"Kamala Beach",depart:"לקראת השקיעה",arrive:"לפני השקיעה",duration:"עד אחרי השקיעה",mode:"ברגל",statusLabel:"חוף + שקיעה",steps:["להגיע לחוף בזמן לאור שלפני השקיעה.","תמונות בשקיעה.","אחרי השקיעה לחזור למלון ולנוח."]}
+ ]);
+})();
