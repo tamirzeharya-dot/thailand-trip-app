@@ -359,3 +359,12 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
  var d5=days.find(function(x){return x.date==="05.10";});
  if(d5){d5.title="פוקט · Kathu Waterfall + יום אחרון + טיסת לילה לבנגקוק"; d5.notes=(d5.notes||[]).concat(["Kathu Waterfall — יעד מועדף לבוקר; חינם; עונת גשמים ולכן צפויה זרימה טובה. להימנע מסלעים/מים בזמן גשם כבד.","נשלח מייל לעיריית Kathu לבירור פתיחה ומצב כניסה למים ל-05.10.","טיסת AirAsia לבנגקוק נסגרה לערב/לילה; לפי המידע שנמסר: נחיתה בבנגקוק ~01:30. שעה ומספר טיסה עדיין דורשים אימות מהכרטיס."]); d5.legs=(d5.legs||[]).concat([{from:"Novotel Phuket Kamala Beach",to:"Kathu Waterfall",depart:"בוקר 05.10",arrive:"",duration:"כשעה–שעתיים באתר",mode:"Grab / מונית",statusLabel:"יעד מועדף · בכפוף למזג אוויר",steps:["נעלי אחיזה ובגד ים.","הבריכות רדודות — יותר שכשוך/התרעננות משחייה ממש.","לא להיכנס למים בזמן גשם חזק או זרימה מסוכנת."]},{from:"Phuket",to:"Bangkok",depart:"ערב/לילה 05.10 · AirAsia",arrive:"~01:30 לפי ההזמנה שנמסרה",duration:"",mode:"טיסה",statusLabel:"סגור · פרטי טיסה לאימות",steps:["להשאיר מרווח גדול לשדה ולכבודה.","לא לתכנן פעילות מאוחרת מדי לפני היציאה לשדה."]}]);}
 })();
+
+/* VERIFIED-SL765-OCT5 */
+(function(){
+ var d=((window.TRIP_DATA&&window.TRIP_DATA.days)||[]).find(function(x){return x.date==="05.10";}); if(!d)return;
+ d.title="פוקט · Kathu Waterfall + יום אחרון + Thai Lion Air SL765 לבנגקוק";
+ d.notes=(d.notes||[]).filter(function(n){return !/AirAsia|01:30|1:30/.test(n);}).concat(["טיסה מאומתת מה-E-itinerary: Thai Lion Air SL765, 05.10.2026.","המראה 22:05 מ-Phuket International Airport (HKT), טרמינל D; נחיתה 23:30 ב-Don Mueang (DMK), טרמינל 2.","Booking No. 1658116140867748; Airline Booking Reference JSMIEU.","כבודה בכרטיס: Personal item + Carry-on, משקל כולל עד 7 ק״ג; אין כבודה נשלחת חינם.","המסמך ממליץ להגיע לשדה לפחות שעתיים לפני ההמראה."]);
+ d.legs=(d.legs||[]).filter(function(l){return !((l.to||"").match(/Bangkok|בנגקוק/)||(l.mode||"").match(/טיסה/));});
+ d.legs.push({from:"Phuket International Airport (HKT)",to:"Don Mueang International Airport (DMK) · T2",depart:"22:05 · 05.10",arrive:"23:30 · 05.10",duration:"1:25",mode:"Thai Lion Air SL765",statusLabel:"כרטיס מאומת",steps:["להגיע ל-HKT לפחות עד 20:05; עדיף להשאיר מרווח נוסף.","כבודה: Personal item + Carry-on בלבד, יחד עד 7 ק״ג.","אין Checked baggage חינם — לטפל בכבודה מראש אם צריך."]});
+})();
