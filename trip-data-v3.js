@@ -329,3 +329,13 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
  d.budget={planA:"כ-5,200–6,200 THB",dive:"3,000 THB כולל ציוד מלא",evening:"1,800 THB FantaSea Show Only",planB:"משתנה; Big Buddha חינם / Hanuman World 1,990–3,490 THB"};
 })();
 /* LIVE-PHUKET-OCT4-PLAN-END */
+
+/* LIVE-PHUKET-OCT4-AFTERNOON-UPDATE */
+(function(){
+  var d=(window.TRIP_DATA&&window.TRIP_DATA.days||[]).find(function(x){return x.date==="04.10";});
+  if(!d)return;
+  d.title="פוקט · כביסה הושלמה + אחה״צ רגוע + Phuket FantaSea";
+  d.notes=(d.notes||[]).concat(["כביסה הושלמה בפועל בקמאלה: Wash + Dry, עלות 100 THB.","אופנוע נבדק אך לא נבחר כרגע; נמסר מחיר 350 THB ופיקדון/צילום דרכון.","צלילת יום רגילה כבר יצאה מוקדם; לא לבנות עליה להמשך היום אלא אם תימצא יציאה מאוחרת מאומתת."]);
+  d.legs=(d.legs||[]).filter(function(l){return !(l.to||"").match(/Wanna Laundry|Self Service Laundry|כביסה מקומית/);});
+  d.legs.unshift({from:"קמאלה",to:"Novotel Phuket Kamala Beach",depart:"~14:10",arrive:"~14:30",duration:"כ-20 דקות",mode:"חזרה למלון",statusLabel:"כביסה הושלמה · 100 THB",steps:["חזרה למלון עם הכביסה הנקייה.","מנוחה/בריכה/חוף לפני פעילות הערב."]});
+})();
