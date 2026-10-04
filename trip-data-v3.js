@@ -310,3 +310,22 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
    photo:"צילום מקורי מהטיול · 03.10.2026"
  });
 })();
+
+/* LIVE-PHUKET-OCT4-PLAN-START */
+(function(){
+ const t=window.TRIP_V3,d=t.days.find(x=>x.id==="04.10"); if(!d)return;
+ d.title="פוקט · Plan A צלילת אחה״צ / Plan B טיול + ערב בקמאלה";
+ d.stay="Novotel Phuket Kamala Beach · לילה שני";
+ d.planFlexible=true;
+ d.segments=[
+  {from:"Novotel Phuket Kamala Beach",to:"כביסה מקומית בקמאלה",depart:"10:30–11:00",arrive:"סביב 11:00",duration:"עצירה קצרה",mode:"Grab קצר / מונית / לפי המרחק",statusLabel:"לביצוע לפני הפעילות",steps:["למסור כביסה, לא להמתין במקום.","לבקש מחיר לפי ק״ג ושעת איסוף; עדיפות להיום בערב או מחר בבוקר."],nav:[["Wanna Laundry Kamala", "https://www.google.com/maps/search/?api=1&query="+encodeURIComponent("Wanna Laundry Kamala Phuket")]]}
+ ];
+ d.optionalRoutes=[
+  {title:"🤿 PLAN A — 2 צלילות אחה״צ מקמאלה",when:"היום · להתקשר/לאשר מקום מיד",note:"Merlin Divers Kamala: 2 צלילות חצי יום. 2,500฿ לצולל + 500฿ סט ציוד מלא = 3,000฿. כולל Divemaster, מיכלים, משקולות, מים/פירות וביטוח. לוח מפורסם: Dive 1 ב-14:15, Dive 2 ב-16:30, חזרה לקמאלה 17:30–18:00. כפוף לאישור מקום ולתנאי ים בפועל.",stops:["Merlin Divers · Kamala","Dive #1 · 14:15","Dive #2 · 16:30","חזרה לקמאלה · 17:30–18:00"],segments:[],links:[]},
+  {title:"🌴 PLAN B — פוקט היבשתית, בלי Old Town",when:"אם אין מקום לצלילה / המועדון מבטל בגלל מזג אוויר",note:"לצאת אחרי מסירת הכביסה. Big Buddha — חינם, נוף פנורמי; אחר כך נקודת נוף/חוף לפי מזג האוויר וחזרה לקמאלה. חלופת אדרנלין: Hanuman World, כניסה אחרונה 15:00, חבילות 1,990–3,490฿.",stops:["Big Buddha Phuket","נקודת נוף / חוף בדרום פוקט","Kamala Beach"],segments:[],links:[]},
+  {title:"🌙 ערב — Phuket FantaSea",when:"מ-17:30 · מתאים במיוחד אחרי הצלילה",note:"פתוח היום, יום ראשון, 17:30–23:30. Show Only: 1,800฿; Show + Buffet: 2,200฿. המלצה: Show Only, ולאכול בנפרד לפי העדפות האוכל. אם הצלילה מסתיימת סביב 18:00 — להתקלח/להחליף ולצאת לערב.",stops:["Novotel · מקלחת והחלפה","Phuket FantaSea","חזרה למלון"],segments:[],links:[]}
+ ];
+ d.flex="תקציב Plan A: צלילה 3,000฿ כולל ציוד + FantaSea 1,800฿ + כביסה/נסיעות/אוכל ≈ כ-5,200–6,200฿ בסך הכול. Plan B זול יותר אם עושים Big Buddha/חופים; Hanuman World מוסיף 1,990–3,490฿. תחזית ימית: גלים סביב 1 מ׳ אך מעל 2 מ׳ בסופות רעמים — החלטת המועדון קובעת.";
+ d.budget={planA:"כ-5,200–6,200 THB",dive:"3,000 THB כולל ציוד מלא",evening:"1,800 THB FantaSea Show Only",planB:"משתנה; Big Buddha חינם / Hanuman World 1,990–3,490 THB"};
+})();
+/* LIVE-PHUKET-OCT4-PLAN-END */
