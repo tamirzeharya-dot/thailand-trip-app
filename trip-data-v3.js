@@ -368,3 +368,6 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
  d.legs=(d.legs||[]).filter(function(l){return !((l.to||"").match(/Bangkok|בנגקוק/)||(l.mode||"").match(/טיסה/));});
  d.legs.push({from:"Phuket International Airport (HKT)",to:"Don Mueang International Airport (DMK) · T2",depart:"22:05 · 05.10",arrive:"23:30 · 05.10",duration:"1:25",mode:"Thai Lion Air SL765",statusLabel:"כרטיס מאומת",steps:["להגיע ל-HKT לפחות עד 20:05; עדיף להשאיר מרווח נוסף.","כבודה: Personal item + Carry-on בלבד, יחד עד 7 ק״ג.","אין Checked baggage חינם — לטפל בכבודה מראש אם צריך."]});
 })();
+
+/* OCT5-FREE-LUGGAGE-STORAGE */
+(function(){var d=((window.TRIP_DATA&&window.TRIP_DATA.days)||[]).find(function(x){return x.date==="05.10";});if(!d)return;d.notes=(d.notes||[]).concat(["המלון אישר שמירת חפצים חינם אחרי הצ׳ק-אאוט עד השעה הרצויה.","תכנית: צ׳ק-אאוט → להשאיר את כל המזוודות במלון → לצאת לכל היום רק עם תיק קטן ומים → לחזור למלון לאיסוף → HKT."]);d.legs=(d.legs||[]).concat([{from:"Novotel Phuket Kamala Beach",to:"שמירת חפצים במלון",depart:"אחרי צ׳ק-אאוט",arrive:"",duration:"כל היום",mode:"חינם",statusLabel:"מזוודות נשארות במלון",steps:["להשאיר את כל המזוודות בשמירת החפצים.","לצאת רק עם תיק קטן, מים וציוד ליום.","לחזור לאיסוף לפני היציאה לשדה."]}]);})();
