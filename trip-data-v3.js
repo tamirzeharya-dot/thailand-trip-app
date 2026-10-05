@@ -386,3 +386,6 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
 
 /* REMOVE-FUTURE-DIVING-OCT5 */
 (function(){const V=window.TRIP_V3;if(!V)return;V.days.forEach(function(d){if(!['05.10','06.10','07.10','08.10'].includes(d.id))return;d.segments=(d.segments||[]).filter(s=>!/צליל|dive|diving|קו טאו/i.test(JSON.stringify(s)));d.optionalRoutes=(d.optionalRoutes||[]).filter(r=>!/צליל|dive|diving|קו טאו/i.test(JSON.stringify(r)));if(d.flex)d.flex=d.flex.replace(/[^.]*צליל[^.]*\.?/gi,'').replace(/[^.]*קו טאו[^.]*\.?/gi,'');});})();
+
+/* OCT5-KATHU-DETAILS */
+(function(){const V=window.TRIP_V3;if(!V)return;const d=V.days.find(x=>x.id==='05.10');if(!d)return;const s=(d.segments||[]).find(x=>(x.to||'').includes('Kathu Waterfall'));if(!s)return;s.depart='מומלץ 09:00–10:00, אחרי צ׳ק-אאוט';s.arrive='כ-30–45 דקות מקמלה, לפי תנועה';s.duration='1–2 שעות';s.mode='Grab / מונית · יעד: Kathu Waterfall';s.statusLabel='חינם · מותנה במזג האוויר';s.steps=['ניווט: Kathu Waterfall, Kathu District, Phuket 83120','שעות מומלצות/מקובלות: 08:00–18:00 · כניסה חינם','מפל קטן בתוך ג׳ונגל עם בריכות רדודות ומדרגות למפלסים עליונים','לקחת: נעלי אחיזה, מים, דוחה יתושים, מגבת/בגד ים','היום: לבדוק גשם לפני היציאה; לא לעלות למפלסים עליונים בגשם חזק','אין צורך בכרטיס מראש','אם מזג האוויר לא בטוח: לעבור לפעילות מקורה'];})();
