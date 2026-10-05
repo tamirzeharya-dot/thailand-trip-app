@@ -278,7 +278,7 @@ replaceDay("04.10",{
  title:"פוקט · קמאלה + ערב פטונג",stay:"לילה שני · Novotel Phuket Kamala Beach",planFlexible:false,
  segments:[],
  optionalRoutes:[],
- flex:"הצלילה שתוכננה כאפשרות בוטלה ולא בוצעה. היום בפועל נשאר בפוקט: כביסה בקמאלה, מנוחה בריזורט וערב בפטונג."
+ flex:"היום בפועל: כביסה בקמאלה, מנוחה בריזורט וערב בפטונג."
 });
 replaceDay("05.10",{
  title:"פוקט → בנגקוק",stay:"צ׳ק-אאוט Novotel עד 12:00 · טיסת חזרה עדיין לא סגורה",planFlexible:true,
@@ -286,7 +286,7 @@ replaceDay("05.10",{
  optionalRoutes:[{title:"🌊 בוקר קמאלה",when:"עד הצ׳ק-אא",note:"ארוחת בוקר, ים/בריכה ומנוחה לפני החזרה לבנגקוק.",stops:["Kamala Beach","בריכת המלון"],segments:[],links:[]}],
  flex:"להעדיף טיסת אחר הצהריים/ערב כדי להרוויח את הבוקר בפוקט, אך להשאיר מרווח שדה בטוח."
 });
-for(const p of [["Phuket International Airport",maps("Phuket International Airport")],["Novotel Phuket Kamala Beach",maps("Novotel Phuket Kamala Beach")],["Kamala Beach",maps("Kamala Beach Phuket")],["Old Phuket Town",maps("Old Phuket Town")],["Scuba Quest Dive Center Kamala",maps("Scuba Quest Dive Center Kamala Phuket")]]){if(!t.mapPoints.some(x=>x[0]===p[0]))t.mapPoints.push(p);}
+for(const p of [["Phuket International Airport",maps("Phuket International Airport")],["Novotel Phuket Kamala Beach",maps("Novotel Phuket Kamala Beach")],["Kamala Beach",maps("Kamala Beach Phuket")],["Old Phuket Town",maps("Old Phuket Town")],]){if(!t.mapPoints.some(x=>x[0]===p[0]))t.mapPoints.push(p);}
 })();
 
 /* PHUKET-PEPPER-COOKIE-20261003 */
@@ -374,3 +374,9 @@ window.TRIP_V3.oct5RouteNote='11:30 Novotel > Kathu 12:00-13:00 > Big Buddha 13:
 
 /* FINAL-LIVE-CLEANUP-OCT3-5 */
 (function(){const V=window.TRIP_V3;if(!V)return;['03.10','04.10','05.10'].forEach(id=>{const d=V.days.find(x=>x.id===id);if(!d)return;d.optionalRoutes=(d.optionalRoutes||[]).filter(r=>!/צליל|fun dives|scuba quest|merlin divers|racha yai/i.test(JSON.stringify(r)));});})();
+
+/* AUTHORITATIVE-HISTORY-OCT3-4-20261005 */
+(function(){const V=window.TRIP_V3;if(!V)return;
+const d3=V.days.find(x=>x.id==='03.10');if(d3){d3.title='בנגקוק → פוקט · קמאלה';d3.stay='Novotel Phuket Kamala Beach · 3–5.10';d3.planFlexible=false;d3.optionalRoutes=[];d3.flex='טיסה מבנגקוק לפוקט, מעבר לקמאלה וצ׳ק-אין ב-Novotel Phuket Kamala Beach.';}
+const d4=V.days.find(x=>x.id==='04.10');if(d4){d4.title='פוקט · קמאלה + ערב פטונג';d4.stay='Novotel Phuket Kamala Beach · לילה שני';d4.planFlexible=false;d4.optionalRoutes=[];d4.flex='כביסה בקמאלה, מנוחה בריזורט, חוף ושקיעה, ובהמשך ערב בפטונג.';}
+})();
