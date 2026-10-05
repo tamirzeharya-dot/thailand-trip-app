@@ -275,13 +275,10 @@ replaceDay("03.10",{
  flex:"אחרי הצ׳ק-אין: חדר, ים/בריכה וחוף קמאלה. לשמור את השקיעה והערב רגועים ליד המלון."
 });
 replaceDay("04.10",{
- title:"פוקט · צלילה + קמאלה / Old Town",stay:"לילה שני · Novotel Phuket Kamala Beach",planFlexible:true,
+ title:"פוקט · קמאלה + ערב פטונג",stay:"לילה שני · Novotel Phuket Kamala Beach",planFlexible:false,
  segments:[],
- optionalRoutes:[
- {title:"🤿 צלילת בוקר / יום · אופציה לבדיקה",when:"4.10 בבוקר · רק לאחר אישור זמינות מהמועדון",note:"להעביר לפוקט את רעיון ה-Fun Dives שתוכנן ל: 2 צלילות מועדפות, מדריך, ציוד שכור מלא וצילום אם זמין. לבדוק קודם מפעיל באזור Kamala ואתר מתאים להסמכה ולתנאי הים. לא הוזמן עדיין.",stops:["Scuba Quest Dive Center Kamala · בדיקה ראשונה","Racha Yai · יעד מועדף אם יש יציאה מתאימה","ציוד מלא + מדריך + צילום אם זמין"],segments:[],links:[]},
- {title:"🏮 Old Phuket Town · ערב",when:"אחר הצהריים/ערב, אם זמן החזרה מהצלילה מאפשר",note:"עיר עתיקה, צילום ואווירה. 4.10 הוא יום ראשון ולכן אפשר לשלב את Lard Yai Sunday Walking Street. לא לבנות על אוכל רחוב; לבחור מסעדה מסודרת.",stops:["Old Phuket Town","Thalang Road / Lard Yai Sunday Walking Street"],segments:[],links:[]}
- ],
- flex:"עדיפות לצלילה אם נמצאת יציאה טובה שמתאימה לזמן. אם הצלילה יום ארוך, לא לדחוס בכוח את Old Town; קמאלה, חוף ושקיעה נשארים חלופה."
+ optionalRoutes:[],
+ flex:"הצלילה שתוכננה כאפשרות בוטלה ולא בוצעה. היום בפועל נשאר בפוקט: כביסה בקמאלה, מנוחה בריזורט וערב בפטונג."
 });
 replaceDay("05.10",{
  title:"פוקט → בנגקוק",stay:"צ׳ק-אאוט Novotel עד 12:00 · טיסת חזרה עדיין לא סגורה",planFlexible:true,
@@ -374,3 +371,6 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
 
 /* OCT5-ROUTE-NOTE */
 window.TRIP_V3.oct5RouteNote='11:30 Novotel > Kathu 12:00-13:00 > Big Buddha 13:45-14:30 > Karon Viewpoint 15:00-15:20 > Nai Harn 15:35-16:20 > Windmill 16:30-16:50 > Promthep 17:00-17:25 > Novotel 18:35, bags, depart 18:50 > HKT by 20:00. Grab Rent 2678 THB, overtime 5 THB/min. Nai Yang optional only if early; after 19:00 direct to HKT.';
+
+/* FINAL-LIVE-CLEANUP-OCT3-5 */
+(function(){const V=window.TRIP_V3;if(!V)return;['03.10','04.10','05.10'].forEach(id=>{const d=V.days.find(x=>x.id===id);if(!d)return;d.optionalRoutes=(d.optionalRoutes||[]).filter(r=>!/צליל|fun dives|scuba quest|merlin divers|racha yai/i.test(JSON.stringify(r)));});})();
