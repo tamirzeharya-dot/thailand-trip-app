@@ -389,3 +389,6 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
 
 /* OCT5-KATHU-DETAILS */
 (function(){const V=window.TRIP_V3;if(!V)return;const d=V.days.find(x=>x.id==='05.10');if(!d)return;const s=(d.segments||[]).find(x=>(x.to||'').includes('Kathu Waterfall'));if(!s)return;s.depart='מומלץ 09:00–10:00, אחרי צ׳ק-אאוט';s.arrive='כ-30–45 דקות מקמלה, לפי תנועה';s.duration='1–2 שעות';s.mode='Grab / מונית · יעד: Kathu Waterfall';s.statusLabel='חינם · מותנה במזג האוויר';s.steps=['ניווט: Kathu Waterfall, Kathu District, Phuket 83120','שעות מומלצות/מקובלות: 08:00–18:00 · כניסה חינם','מפל קטן בתוך ג׳ונגל עם בריכות רדודות ומדרגות למפלסים עליונים','לקחת: נעלי אחיזה, מים, דוחה יתושים, מגבת/בגד ים','היום: לבדוק גשם לפני היציאה; לא לעלות למפלסים עליונים בגשם חזק','אין צורך בכרטיס מראש','אם מזג האוויר לא בטוח: לעבור לפעילות מקורה'];})();
+
+/* OCT5-ROUTE-NOTE */
+window.TRIP_V3.oct5RouteNote='11:30 Novotel > Kathu 12:00-13:00 > Big Buddha 13:45-14:30 > Karon Viewpoint 15:00-15:20 > Nai Harn 15:35-16:20 > Windmill 16:30-16:50 > Promthep 17:00-17:25 > Novotel 18:35, bags, depart 18:50 > HKT by 20:00. Grab Rent 2678 THB, overtime 5 THB/min. Nai Yang optional only if early; after 19:00 direct to HKT.';
