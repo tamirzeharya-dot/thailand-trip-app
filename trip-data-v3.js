@@ -87,7 +87,7 @@ const bangkokPlans={
 };
 Object.entries(bangkokPlans).forEach(([id,plan])=>{const day=window.TRIP_V3.days.find(d=>d.id===id);if(!day)return;day.planFlexible=true;day.optionalRoutes=plan;day.food=bangkokFood;day.links=[...(day.links||[]),...bangkokLinks];});
 
-//  diving alternative was cancelled during the live trip and is intentionally not rendered.
+// Cancelled route removed.
 const paiWater=window.TRIP_V3.days.find(d=>d.id==='30.09');
 if(paiWater){paiWater.optionalRoutes=[
 {icon:'💧',title:'מפל ומקדש בפאי',when:'חלופה לאומגה או המשך רק אם השעות מאפשרות',note:'השילוב הטבעי ביותר במסלול. להשתמש בנהג פרטי או טיול מאורגן, לא לצאת עצמאית על קטנוע ללא ניסיון.',stops:['Pam Bok Waterfall בבוקר','Bamboo Bridge או Land Split לפי מצב הדרך','חזרה למנוחה בפאי','Wat Phra That Mae Yen לקראת שקיעה','שוק הלילה של פאי'],links:[['Pam Bok Waterfall','https://www.google.com/maps/search/?api=1&query=Pam+Bok+Waterfall+Pai'],['Wat Phra That Mae Yen','https://www.google.com/maps/search/?api=1&query=Wat+Phra+That+Mae+Yen+Pai']]},
@@ -309,16 +309,6 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
 
 /* OCT4-DIVE-PLAN-REMOVED: cancelled during live trip */
 
-/* LIVE-PHUKET-OCT4-AFTERNOON-UPDATE */
-(function(){
-  var d=(window.TRIP_DATA&&window.TRIP_DATA.days||[]).find(function(x){return x.date==="04.10";});
-  if(!d)return;
-  d.title="פוקט · כביסה הושלמה + אחה״צ רגוע + Phuket FantaSea";
-  d.notes=(d.notes||[]).concat(["כביסה הושלמה בפועל בקמאלה: Wash + Dry, עלות 100 THB.","אופנוע נבדק אך לא נבחר כרגע; נמסר מחיר 350 THB ופיקדון/צילום דרכון.","צלילת יום רגילה כבר יצאה מוקדם; לא לבנות עליה להמשך היום אלא אם תימצא יציאה מאוחרת מאומתת."]);
-  d.legs=(d.legs||[]).filter(function(l){return !(l.to||"").match(/Wanna Laundry|Self Service Laundry|כביסה מקומית/);});
-  d.legs.unshift({from:"קמאלה",to:"Novotel Phuket Kamala Beach",depart:"~14:10",arrive:"~14:30",duration:"כ-20 דקות",mode:"חזרה למלון",statusLabel:"כביסה הושלמה · 100 THB",steps:["חזרה למלון עם הכביסה הנקייה.","מנוחה/בריכה/חוף לפני פעילות הערב."]});
-})();
-
 /* LIVE-PHUKET-OCT4-RESORT-AFTERNOON */
 (function(){
  var d=(window.TRIP_DATA&&window.TRIP_DATA.days||[]).find(function(x){return x.date==="04.10";}); if(!d)return;
@@ -363,17 +353,11 @@ for(const p of [["Phuket International Airport",maps("Phuket International Airpo
  if(d5){d5.title='פוקט · Kathu Waterfall + יום חופשי + טיסת SL765';d5.stay='צ׳ק-אאוט · שמירת חפצים חינם במלון · טיסת לילה';d5.flex='אחרי הצ׳ק-אאוט משאירים את כל המזוודות בחינם במלון ויוצאים לכל היום רק עם תיק קטן ומים. Kathu Waterfall יעד מועדף לבוקר, בכפוף למזג האוויר. חוזרים למלון לאיסוף המזוודות ואז לשדה.';d5.segments=[{from:'Novotel Phuket Kamala Beach',to:'שמירת חפצים במלון',depart:'אחרי צ׳ק-אאוט',arrive:'',duration:'עד הערב',mode:'שמירת חפצים חינם',luggage:'כל המזוודות נשארות במלון',statusLabel:'מאושר במלון',steps:['להשאיר את כל המזוודות','לצאת רק עם תיק קטן ומים']},{from:'Novotel / Kamala',to:'Kathu Waterfall',depart:'בוקר / אחרי צ׳ק-אאוט',arrive:'',duration:'כשעה–שעתיים באתר',mode:'Grab / מונית',luggage:'המזוודות במלון',statusLabel:'יעד מועדף · לפי מזג האוויר',steps:['נעלי אחיזה ובגד ים','להימנע מכניסה למים בזמן גשם חזק או זרימה מסוכנת']},{from:'Novotel Phuket Kamala Beach',to:'Phuket International Airport (HKT)',depart:'אחרי איסוף המזוודות',arrive:'עד 20:05 לכל המאוחר',duration:'להשאיר מרווח לתנועה',mode:'Grab / מונית',luggage:'לאסוף את כל המזוודות מהמלון',statusLabel:'יציאה לשדה',steps:['איסוף המזוודות משמירת החפצים','יציאה מוקדמת לשדה']},{from:'Phuket International Airport (HKT)',to:'Don Mueang International Airport (DMK) · T2',depart:'22:05 · 05.10',arrive:'23:30 · 05.10',duration:'1:25',mode:'Thai Lion Air SL765',luggage:'Personal item + Carry-on יחד עד 7 ק״ג; אין Checked baggage חינם',statusLabel:'כרטיס מאומת',steps:['להגיע לשדה לפחות שעתיים לפני ההמראה','לטפל מראש בכבודה אם נדרשת מזוודה לבטן המטוס']}];}
 })();
 
-/* REMOVE-FUTURE-DIVING-OCT5 */
-(function(){const V=window.TRIP_V3;if(!V)return;V.days.forEach(function(d){if(!['05.10','06.10','07.10','08.10'].includes(d.id))return;d.segments=(d.segments||[]).filter(s=>!/צליל|dive|diving|/i.test(JSON.stringify(s)));d.optionalRoutes=(d.optionalRoutes||[]).filter(r=>!/צליל|dive|diving|/i.test(JSON.stringify(r)));if(d.flex)d.flex=d.flex.replace(/[^.]*צליל[^.]*\.?/gi,'').replace(/[^.]*[^.]*\.?/gi,'');});})();
-
 /* OCT5-KATHU-DETAILS */
 (function(){const V=window.TRIP_V3;if(!V)return;const d=V.days.find(x=>x.id==='05.10');if(!d)return;const s=(d.segments||[]).find(x=>(x.to||'').includes('Kathu Waterfall'));if(!s)return;s.depart='מומלץ 09:00–10:00, אחרי צ׳ק-אאוט';s.arrive='כ-30–45 דקות מקמלה, לפי תנועה';s.duration='1–2 שעות';s.mode='Grab / מונית · יעד: Kathu Waterfall';s.statusLabel='חינם · מותנה במזג האוויר';s.steps=['ניווט: Kathu Waterfall, Kathu District, Phuket 83120','שעות מומלצות/מקובלות: 08:00–18:00 · כניסה חינם','מפל קטן בתוך ג׳ונגל עם בריכות רדודות ומדרגות למפלסים עליונים','לקחת: נעלי אחיזה, מים, דוחה יתושים, מגבת/בגד ים','היום: לבדוק גשם לפני היציאה; לא לעלות למפלסים עליונים בגשם חזק','אין צורך בכרטיס מראש','אם מזג האוויר לא בטוח: לעבור לפעילות מקורה'];})();
 
 /* OCT5-ROUTE-NOTE */
 window.TRIP_V3.oct5RouteNote='11:30 Novotel > Kathu 12:00-13:00 > Big Buddha 13:45-14:30 > Karon Viewpoint 15:00-15:20 > Nai Harn 15:35-16:20 > Windmill 16:30-16:50 > Promthep 17:00-17:25 > Novotel 18:35, bags, depart 18:50 > HKT by 20:00. Grab Rent 2678 THB, overtime 5 THB/min. Nai Yang optional only if early; after 19:00 direct to HKT.';
-
-/* FINAL-LIVE-CLEANUP-OCT3-5 */
-(function(){const V=window.TRIP_V3;if(!V)return;['03.10','04.10','05.10'].forEach(id=>{const d=V.days.find(x=>x.id===id);if(!d)return;d.optionalRoutes=(d.optionalRoutes||[]).filter(r=>!/צליל|fun dives|scuba quest|merlin divers|racha yai/i.test(JSON.stringify(r)));});})();
 
 /* AUTHORITATIVE-HISTORY-OCT3-4-20261005 */
 (function(){const V=window.TRIP_V3;if(!V)return;
